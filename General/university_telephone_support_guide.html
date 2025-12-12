@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Markdown to HTML Converter">
+    <title>university_telephone_support_guide</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>university_telephone_support_guide</h1>
+            <div class="meta">
+                <span class="last-updated">Last updated: 2025-10-02 21:53:35</span>
+            </div>
+        </header>
+        <main class="content">
+            <h1 id="university-telephone-support-guide">☎️ University Telephone Support Guide</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#1-call-handling-protocol">1. Call Handling Protocol</a></li>
+<li><a href="#initial-greeting-script">Initial Greeting (Script)</a></li>
+<li><a href="#information-gathering">Information Gathering</a></li>
+<li><a href="#2-common-university-systems">2. Common University Systems</a></li>
+<li><a href="#a-learning-management-system-lms">Learning Management System (LMS)</a></li>
+<li><a href="#b-university-email">University Email</a></li>
+<li><a href="#3-authentication-issues">3. Authentication Issues</a></li>
+<li><a href="#password-reset-flow">Password Reset Flow</a></li>
+<li><a href="#4-academic-software-support">4. Academic Software Support</a></li>
+<li><a href="#common-applications">Common Applications</a></li>
+<li><a href="#5-research-computing">5. Research Computing</a></li>
+<li><a href="#high-performance-computing-hpc">High-Performance Computing (HPC)</a></li>
+</ul>
+<hr />
+<h1 id="university-telephone-support-guide_1">☎️ University Telephone Support Guide</h1>
+<h2 id="1-call-handling-protocol">1. Call Handling Protocol</h2>
+<h3 id="initial-greeting-script">Initial Greeting (Script)</h3>
+<pre class="codehilite"><code class="language-markdown">&quot;Thank you for calling [University Name] IT Support. 
+My name is [Your Name]. May I have your name and department, please?&quot;
+
+[After user responds]
+
+&quot;How can I assist you today?&quot;
+</code></pre>
+
+<h3 id="information-gathering">Information Gathering</h3>
+<ul>
+<li><strong>Required Details</strong>:</li>
+<li>Full name</li>
+<li>University ID</li>
+<li>Department/College</li>
+<li>Contact number</li>
+<li>Location (if on-campus)</li>
+<li>Device being used</li>
+<li>Error messages (verbatim)</li>
+</ul>
+<h2 id="2-common-university-systems">2. Common University Systems</h2>
+<h3 id="a-learning-management-system-lms">A. Learning Management System (LMS)</h3>
+<h4 id="common-issues">Common Issues:</h4>
+<ol>
+<li>
+<p><strong>Login Problems</strong><br />
+   - Verify username format (e.g., jsmith@univ.edu)<br />
+   - Check password reset portal<br />
+   - Verify account activation status</p>
+</li>
+<li>
+<p><strong>Course Access</strong><br />
+   - Confirm enrollment in student information system<br />
+   - Check term activation dates<br />
+   - Verify browser compatibility</p>
+</li>
+</ol>
+<h4 id="verification-command">Verification Command:</h4>
+<pre class="codehilite"><code class="language-sql">-- Example: Check course enrollment
+SELECT * FROM course_enrollments 
+WHERE user_id = '[ID]' 
+AND term = '[TERM]';
+</code></pre>
+
+<h3 id="b-university-email">B. University Email</h3>
+<h4 id="troubleshooting-flow">Troubleshooting Flow:</h4>
+<pre class="codehilite"><code class="language-mermaid">graph TD
+    A[Can't access email?] --&gt; B{Web or Client?}
+    B --&gt;|Web| C[Clear cache/cookies]
+    B --&gt;|Client| D[Check server settings]
+    C --&gt; E[Try different browser]
+    D --&gt; F[Verify IMAP/POP settings]
+    E --&gt; G{Escalate if unresolved}
+    F --&gt; G
+</code></pre>
+
+<h2 id="3-authentication-issues">3. Authentication Issues</h2>
+<h3 id="password-reset-flow">Password Reset Flow</h3>
+<ol>
+<li>Verify identity (security questions/ID)</li>
+<li>Guide through self-service portal:<br />
+<code>https://password.university.edu/reset</code></li>
+<li>Set temporary password with requirements:<br />
+   - 12+ characters<br />
+   - Upper/lower case<br />
+   - Numbers &amp; special characters<br />
+   - No dictionary words</li>
+</ol>
+<h2 id="4-academic-software-support">4. Academic Software Support</h2>
+<h3 id="common-applications">Common Applications</h3>
+<table>
+<thead>
+<tr>
+<th>Software</th>
+<th>Support Contact</th>
+<th>Common Fixes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MATLAB</td>
+<td>24/7 Support</td>
+<td>License renewal, Toolbox access</td>
+</tr>
+<tr>
+<td>SPSS</td>
+<td>M-F 8-5</td>
+<td>Installation, License codes</td>
+</tr>
+<tr>
+<td>ArcGIS</td>
+<td>Dept. Support</td>
+<td>Extension activation</td>
+</tr>
+<tr>
+<td>Zoom</td>
+<td>24/7 Support</td>
+<td>Audio/Video issues, Recording access</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-research-computing">5. Research Computing</h2>
+<h3 id="high-performance-computing-hpc">High-Performance Computing (HPC)</h3>
+<pre class="codehilite"><code class="language-markdown"># Common HPC Issues
+1. Login failures
+   - Verify SSH key setup
+   - Check VPN connection
+
+2. Job failures
+   - Check job logs in ~/slurm-
+   - Verify resource requests
+
+3. Storage issues
+   - Check quota: `lfs quota -h /home/userid`
+   - Clean up old files
+</code></pre>
+
+<h2 id="6-classroom-technology">6. Classroom Technology</h2>
+<h3 id="emergency-support-numbers">Emergency Support Numbers</h3>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Contact</th>
+<th>Hours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Projectors</td>
+<td>AV Services x4357</td>
+<td>7am-10pm</td>
+</tr>
+<tr>
+<td>Lecture Capture</td>
+<td>Media Services x2100</td>
+<td>8am-5pm</td>
+</tr>
+<tr>
+<td>Computer Labs</td>
+<td>Lab Support x3301</td>
+<td>24/7</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-documentation-ticketing">7. Documentation &amp; Ticketing</h2>
+<h3 id="call-logging-template">Call Logging Template</h3>
+<pre class="codehilite"><code class="language-markdown">## [Ticket #] - [Brief Description]
+
+### Caller Information
+- Name: 
+- Department: 
+- Contact: 
+- Location: 
+
+### Issue Details
+- System: [LMS/Email/Network/etc.]
+- Error Message: 
+- Steps to Reproduce: 
+
+### Troubleshooting Performed
+1. [Action] - [Result]
+2. [Action] - [Result]
+
+### Resolution
+- [ ] First-call resolution
+- [ ] Escalated to [Team]
+- [ ] Callback required
+
+### Notes:
+[Additional information]
+</code></pre>
+
+<h2 id="8-escalation-matrix">8. Escalation Matrix</h2>
+<h3 id="technical-teams">Technical Teams</h3>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Level 1</th>
+<th>Level 2</th>
+<th>Level 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Network</td>
+<td>Help Desk</td>
+<td>Network Ops</td>
+<td>Network Engineering</td>
+</tr>
+<tr>
+<td>LMS</td>
+<td>Help Desk</td>
+<td>Academic Tech</td>
+<td>Vendor Support</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>Help Desk</td>
+<td>Messaging Team</td>
+<td>Enterprise Systems</td>
+</tr>
+</tbody>
+</table>
+<h3 id="after-hours-support">After-Hours Support</h3>
+<ol>
+<li>Call University Police (x911)</li>
+<li>Request IT on-call technician</li>
+<li>Provide ticket number and issue details</li>
+</ol>
+<h2 id="9-training-resources">9. Training Resources</h2>
+<h3 id="quick-reference-guides">Quick Reference Guides</h3>
+<ol>
+<li><a href="https://it.university.edu/wifi">WiFi Setup Guide</a></li>
+<li><a href="https://it.university.edu/2fa">Two-Factor Authentication</a></li>
+<li><a href="https://it.university.edu/software">Software Downloads</a></li>
+</ol>
+<h2 id="10-call-closing-protocol">10. Call Closing Protocol</h2>
+<h3 id="before-ending-call">Before Ending Call:</h3>
+<ol>
+<li>Summarize resolution</li>
+<li>Verify issue is resolved</li>
+<li>Provide ticket number</li>
+<li>Offer additional assistance</li>
+</ol>
+<h3 id="closing-script">Closing Script:</h3>
+<pre class="codehilite"><code class="language-markdown">&quot;Is there anything else I can assist you with today?&quot;
+[If no]
+&quot;Thank you for contacting [University] IT Support. 
+Your ticket number is [###]. Have a great day!&quot;
+</code></pre>
+
+<hr />
+<p><em>Document Version: 1.0<br />
+Last Updated: 2025-09-20</em></p>
+        </main>
+        <footer class="footer">
+            <p>Generated by Markdown to HTML Converter</p>
+        </footer>
+    </div>
+</body>
+</html>

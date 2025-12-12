@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Markdown to HTML Converter">
+    <title>quick_reference_guide</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>quick_reference_guide</h1>
+            <div class="meta">
+                <span class="last-updated">Last updated: 2025-10-02 14:23:07</span>
+            </div>
+        </header>
+        <main class="content">
+            <h1 id="quick-reference-guide-for-it-support">⚡ Quick Reference Guide for IT Support</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<h3 id="1-system-information">1. System Information</h3>
+<ul>
+<li>1.1 Common System Commands</li>
+<li>Windows Commands</li>
+<li>macOS Commands</li>
+<li>1.2 Network Troubleshooting</li>
+<li>Basic Connectivity</li>
+<li>Advanced Network Tools</li>
+</ul>
+<h3 id="2-quick-fixes">2. Quick Fixes</h3>
+<ul>
+<li>2.1 Common Issues &amp; Solutions</li>
+<li>Slow Computer</li>
+<li>No Internet</li>
+<li>Printer Not Working</li>
+<li>Application Crashes</li>
+</ul>
+<h3 id="3-escalation-matrix">3. Escalation Matrix</h3>
+<ul>
+<li>3.1 When to Escalate</li>
+<li>3.2 Contact Information</li>
+</ul>
+<h3 id="4-documentation-links">4. Documentation Links</h3>
+<ul>
+<li>4.1 Internal Resources</li>
+<li>4.2 External References</li>
+</ul>
+<h3 id="5-common-procedures">5. Common Procedures</h3>
+<ul>
+<li>5.1 Password Reset</li>
+<li>5.2 Account Unlock</li>
+<li>5.3 Remote Assistance</li>
+</ul>
+<h3 id="6-quick-scripts">6. Quick Scripts</h3>
+<ul>
+<li>Windows Scripts</li>
+<li>macOS Scripts</li>
+<li>Network Scripts</li>
+</ul>
+<h3 id="7-error-code-reference">7. Error Code Reference</h3>
+<ul>
+<li>Common Error Messages</li>
+<li>Troubleshooting Steps</li>
+</ul>
+<h3 id="8-security-protocols">8. Security Protocols</h3>
+<ul>
+<li>Incident Response</li>
+<li>Security Best Practices</li>
+</ul>
+<h3 id="9-hardware-reference">9. Hardware Reference</h3>
+<ul>
+<li>Minimum System Requirements</li>
+<li>Hardware Diagnostics</li>
+</ul>
+<h3 id="10-software-management">10. Software Management</h3>
+<ul>
+<li>Installation Guides</li>
+<li>Update Procedures</li>
+</ul>
+<h2 id="1-system-information_1">1. System Information</h2>
+<h3 id="11-common-system-commands">1.1 Common System Commands</h3>
+<pre class="codehilite"><code class="language-bash"># Windows
+systeminfo               # System configuration
+msinfo32                 # GUI system information
+winver                   # Windows version
+ver                      # OS version
+
+# macOS
+sw_vers                  # OS version
+system_profiler SPHardwareDataType  # Hardware info
+diskutil list            # Disk information
+</code></pre>
+
+<h3 id="12-network-troubleshooting">1.2 Network Troubleshooting</h3>
+<pre class="codehilite"><code class="language-bash"># Basic Connectivity
+ping 8.8.8.8             # Test internet connection
+tracert google.com       # Trace network path
+nslookup google.com      # DNS resolution
+
+# Advanced
+netstat -ano             # Active connections
+ipconfig /all           # Network configuration (Windows)
+ifconfig                # Network configuration (macOS/Linux)
+netsh winsock reset      # Reset network stack (Windows)
+</code></pre>
+
+<h2 id="2-quick-fixes_1">2. Quick Fixes</h2>
+<h3 id="21-common-issues-solutions">2.1 Common Issues &amp; Solutions</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Quick Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Slow Computer</strong></td>
+<td>1. Check Task Manager for high CPU/memory usage<br>2. Run disk cleanup (<code>cleanmgr</code>)<br>3. Disable startup programs (<code>msconfig</code>)</td>
+</tr>
+<tr>
+<td><strong>No Internet</strong></td>
+<td>1. Check physical connections<br>2. Restart router/modem<br>3. Run network troubleshooter</td>
+</tr>
+<tr>
+<td><strong>Printer Not Working</strong></td>
+<td>1. Check power/cables<br>2. Set as default printer<br>3. Restart print spooler (<code>services.msc</code> → Spooler)</td>
+</tr>
+<tr>
+<td><strong>Application Crashes</strong></td>
+<td>1. Update application<br>2. Reinstall application<br>3. Check Event Viewer for errors</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-escalation-matrix_1">3. Escalation Matrix</h2>
+<h3 id="31-when-to-escalate">3.1 When to Escalate</h3>
+<ul>
+<li>System-wide outages</li>
+<li>Security incidents</li>
+<li>Data loss/corruption</li>
+<li>Repeated unresolved issues</li>
+<li>Requests requiring higher privileges</li>
+</ul>
+<h3 id="32-contact-information">3.2 Contact Information</h3>
+<table>
+<thead>
+<tr>
+<th>Team</th>
+<th>Contact</th>
+<th>Hours</th>
+<th>Escalation Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Network</td>
+<td>x4357 (24/7)</td>
+<td>24/7</td>
+<td>On-call rotation</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>soc@example.com</td>
+<td>24/7</td>
+<td>PagerDuty #123</td>
+</tr>
+<tr>
+<td>Server Admin</td>
+<td>server-team@example.com</td>
+<td>8-5</td>
+<td>Ticket system</td>
+</tr>
+<tr>
+<td>Application Support</td>
+<td>appsupport@example.com</td>
+<td>8-8</td>
+<td>Priority queue</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-documentation-links_1">4. Documentation Links</h2>
+<h3 id="41-internal-resources">4.1 Internal Resources</h3>
+<ul>
+<li><a href="https://kb.example.com">IT Knowledge Base</a></li>
+<li><a href="https://status.example.com">System Status Dashboard</a></li>
+<li><a href="https://password.example.com">Password Reset Portal</a></li>
+<li><a href="https://software.example.com">Software Downloads</a></li>
+</ul>
+<h3 id="42-external-references">4.2 External References</h3>
+<ul>
+<li><a href="https://docs.microsoft.com">Microsoft Docs</a></li>
+<li><a href="https://support.apple.com">Apple Support</a></li>
+<li><a href="https://help.ubuntu.com">Ubuntu Documentation</a></li>
+<li><a href="https://www.cisco.com/c/en/us/support/index.html">Cisco Support</a></li>
+</ul>
+<h2 id="5-common-procedures_1">5. Common Procedures</h2>
+<h3 id="51-password-reset">5.1 Password Reset</h3>
+<ol>
+<li>Verify user identity</li>
+<li>Reset in Active Directory:<br />
+<code>powershell
+   Set-ADAccountPassword -Identity username -NewPassword (ConvertTo-SecureString "TempP@ss123" -AsPlainText -Force) -Reset
+   Set-ADUser -Identity username -ChangePasswordAtLogon $true</code></li>
+<li>Inform user of temporary password</li>
+</ol>
+<h3 id="52-account-unlock">5.2 Account Unlock</h3>
+<pre class="codehilite"><code class="language-powershell">Unlock-ADAccount -Identity username
+</code></pre>
+
+<h3 id="53-remote-assistance">5.3 Remote Assistance</h3>
+<pre class="codehilite"><code class="language-bash"># Windows Quick Assist
+msdt.exe -id WindowsRemoteAssistanceDiagnostic
+
+# Microsoft Remote Desktop
+mstsc /v:computername
+</code></pre>
+
+<h2 id="6-quick-scripts_1">6. Quick Scripts</h2>
+<h3 id="61-check-disk-space-windows">6.1 Check Disk Space (Windows)</h3>
+<pre class="codehilite"><code class="language-powershell">Get-PSDrive -PSProvider 'FileSystem' | 
+    Select-Object Name, @{Name=&quot;Used(GB)&quot;;Expression={[math]::Round($_.Used/1GB,2)}}, 
+                 @{Name=&quot;Free(GB)&quot;;Expression={[math]::Round($_.Free/1GB,2)}}, 
+                 @{Name=&quot;Total(GB)&quot;;Expression={[math]::Round(($_.Used + $_.Free)/1GB,2)}}
+</code></pre>
+
+<h3 id="62-list-installed-software">6.2 List Installed Software</h3>
+<pre class="codehilite"><code class="language-powershell"># Windows
+Get-ItemProperty HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* | 
+    Select-Object DisplayName, DisplayVersion, InstallDate | 
+    Sort-Object DisplayName | 
+    Format-Table -AutoSize
+
+# macOS
+system_profiler SPApplicationsDataType | grep -E 'Location:|Version:'
+</code></pre>
+
+<h2 id="7-common-ports">7. Common Ports</h2>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Port</th>
+<th>Protocol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTTP</td>
+<td>80</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>HTTPS</td>
+<td>443</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>RDP</td>
+<td>3389</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>SSH</td>
+<td>22</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>SMTP</td>
+<td>25, 587</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>IMAP</td>
+<td>143, 993</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>53</td>
+<td>TCP/UDP</td>
+</tr>
+<tr>
+<td>DHCP</td>
+<td>67, 68</td>
+<td>UDP</td>
+</tr>
+</tbody>
+</table>
+<h2 id="8-keyboard-shortcuts">8. Keyboard Shortcuts</h2>
+<h3 id="81-windows">8.1 Windows</h3>
+<ul>
+<li><code>Win + R</code>: Run dialog</li>
+<li><code>Win + E</code>: File Explorer</li>
+<li><code>Win + X</code>: Quick Link menu</li>
+<li><code>Win + V</code>: Clipboard history</li>
+<li><code>Win + .</code>: Emoji picker</li>
+<li><code>Ctrl + Shift + Esc</code>: Task Manager</li>
+</ul>
+<h3 id="82-macos">8.2 macOS</h3>
+<ul>
+<li><code>Cmd + Space</code>: Spotlight</li>
+<li><code>Cmd + W</code>: Close window</li>
+<li><code>Cmd + Q</code>: Quit application</li>
+<li><code>Cmd + ,</code>: Preferences</li>
+<li><code>Cmd + Shift + .</code>: Show hidden files</li>
+<li><code>Cmd + Option + Esc</code>: Force Quit</li>
+</ul>
+<h2 id="9-troubleshooting-flow">9. Troubleshooting Flow</h2>
+<h3 id="91-basic-troubleshooting-steps">9.1 Basic Troubleshooting Steps</h3>
+<ol>
+<li><strong>Identify</strong> the exact issue</li>
+<li><strong>Reproduce</strong> the problem</li>
+<li><strong>Isolate</strong> the cause</li>
+<li><strong>Resolve</strong> the issue</li>
+<li><strong>Document</strong> the solution</li>
+</ol>
+<h3 id="92-common-error-messages">9.2 Common Error Messages</h3>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Likely Cause</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&ldquo;DNS_PROBE_FINISHED_NXDOMAIN&rdquo;</td>
+<td>DNS resolution failed</td>
+<td>Flush DNS (<code>ipconfig /flushdns</code>)</td>
+</tr>
+<tr>
+<td>&ldquo;No Boot Device Found&rdquo;</td>
+<td>HDD/SSD not detected</td>
+<td>Check connections, BIOS settings</td>
+</tr>
+<tr>
+<td>&ldquo;Invalid username or password&rdquo;</td>
+<td>Credentials incorrect</td>
+<td>Reset password, check Caps Lock</td>
+</tr>
+<tr>
+<td>&ldquo;IP Address Conflict&rdquo;</td>
+<td>Duplicate IP on network</td>
+<td>Release/Renew IP (<code>ipconfig /release</code>, <code>ipconfig /renew</code>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="10-documentation-standards">10. Documentation Standards</h2>
+<h3 id="101-ticket-documentation">10.1 Ticket Documentation</h3>
+<ul>
+<li>Clear, concise problem description</li>
+<li>Steps to reproduce</li>
+<li>Error messages (verbatim)</li>
+<li>Troubleshooting steps taken</li>
+<li>Resolution details</li>
+</ul>
+<h3 id="102-knowledge-base-articles">10.2 Knowledge Base Articles</h3>
+<ul>
+<li>Problem statement</li>
+<li>Affected systems/users</li>
+<li>Step-by-step solution</li>
+<li>Screenshots if helpful</li>
+<li>Related articles</li>
+</ul>
+<hr />
+<p><em>Document Version: 1.0<br />
+Last Updated: 2025-09-20</em></p>
+        </main>
+        <footer class="footer">
+            <p>Generated by Markdown to HTML Converter</p>
+        </footer>
+    </div>
+</body>
+</html>

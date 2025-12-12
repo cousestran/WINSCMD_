@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Markdown to HTML Converter">
+    <title>incident_management_guide</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>incident_management_guide</h1>
+            <div class="meta">
+                <span class="last-updated">Last updated: 2025-10-01 20:47:10</span>
+            </div>
+        </header>
+        <main class="content">
+            <h1 id="it-incident-management-guide">📋 IT Incident Management Guide</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#1--incident-severity-levels">🚨 Incident Severity Levels</a></li>
+<li><a href="#2--incident-log-template">📝 Incident Log Template</a></li>
+<li><a href="#3--workflow">🔄 Workflow</a></li>
+<li><a href="#4--escalation-path">📞 Escalation Path</a><br />
+   - <a href="#technical-escalation">Technical Escalation</a><br />
+   - <a href="#management-escalation">Management Escalation</a></li>
+<li><a href="#5--common-solutions">📊 Common Solutions</a></li>
+<li><a href="#6--performance-metrics">📈 Performance Metrics</a></li>
+<li><a href="#7--templates">📋 Templates</a><br />
+   - <a href="#-status-update-email">Status Update Email</a><br />
+   - <a href="#-handoff-template">Handoff Template</a></li>
+<li><a href="#8--post-incident-review">🔍 Post-Incident Review</a></li>
+<li><a href="#9--quick-reference">🔗 Quick Reference</a></li>
+<li><a href="#10--knowledge-base">📚 Knowledge Base</a></li>
+</ol>
+<hr />
+<h2 id="1-incident-severity-levels">1. 🚨 Incident Severity Levels</h2>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Impact</th>
+<th>Example</th>
+<th>Response Time</th>
+<th>Resolution Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P1 - Critical</strong></td>
+<td>Business operations completely halted</td>
+<td>Network outage, Email down</td>
+<td>15 min</td>
+<td>2 hours</td>
+</tr>
+<tr>
+<td><strong>P2 - High</strong></td>
+<td>Major function impaired</td>
+<td>CRM system down</td>
+<td>1 hour</td>
+<td>4 hours</td>
+</tr>
+<tr>
+<td><strong>P3 - Medium</strong></td>
+<td>Partial non-critical impact</td>
+<td>Printer offline</td>
+<td>4 hours</td>
+<td>1 business day</td>
+</tr>
+<tr>
+<td><strong>P4 - Low</strong></td>
+<td>Minor issue with workaround</td>
+<td>Desktop icon missing</td>
+<td>8 hours</td>
+<td>3 business days</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-incident-log-template">2. 📝 Incident Log Template</h2>
+<pre class="codehilite"><code class="language-markdown">### 🆔 [INC-YYYYMMDD-XXX]
+**Status**: 🟡 In Progress  
+**Priority**: P[1-4]  
+**Reported**: [Date] @ [Time] by [Name]  
+**Category**: [Hardware/Software/Network/Security]  
+**Assigned To**: [Technician]  
+
+#### 📋 Description
+[Clear description of the issue]
+
+#### 📊 Impact
+- Systems: [List affected systems]
+- Users: [Number/Departments]
+- Business Impact: [High/Medium/Low]
+
+#### ⏱️ Timeline
+| Time | Action | Technician | Notes |
+|------|--------|------------|-------|
+| [HH:MM] | Incident created | System | - |
+| [HH:MM] | [Action taken] | [Initials] | [Details] |
+
+#### ✅ Resolution
+- **Root Cause**: [Identified cause]
+- **Steps Taken**:
+  1. [Step 1]
+  2. [Step 2]
+- **Resolution Time**: [HH:MM]
+- **Verified By**: [Name] @ [Time]
+</code></pre>
+
+<h2 id="3-workflow">3. 🔄 Workflow</h2>
+<pre class="codehilite"><code class="language-mermaid">graph TD
+    A[Report] --&gt; B{Triage}
+    B --&gt;|P1/P2| C[Immediate Escalation]
+    B --&gt;|P3/P4| D[Assign to Queue]
+    C --&gt; E[Expert Team]
+    D --&gt; F[Available Technician]
+    E --&gt; G[Resolution]
+    F --&gt; G
+    G --&gt; H{Verified?}
+    H --&gt;|Yes| I[Document &amp; Close]
+    H --&gt;|No| B
+</code></pre>
+
+<h2 id="4-escalation-path">4. 📞 Escalation Path</h2>
+<h3 id="technical-escalation">Technical Escalation</h3>
+<ol>
+<li>
+<p><strong>Level 1</strong>: Help Desk (24/7)<br />
+   - Basic troubleshooting<br />
+   - Password resets<br />
+   - Known issues</p>
+</li>
+<li>
+<p><strong>Level 2</strong>: System Administrators<br />
+   - Server/network issues<br />
+   - Application support</p>
+</li>
+<li>
+<p><strong>Level 3</strong>: Specialists/Vendors<br />
+   - Critical system failures<br />
+   - Vendor-specific issues</p>
+</li>
+</ol>
+<h3 id="management-escalation">Management Escalation</h3>
+<ul>
+<li><strong>30 min unresolved</strong>: Team Lead</li>
+<li><strong>2 hours unresolved</strong>: IT Manager</li>
+<li><strong>4+ hours unresolved</strong>: Director/CTO</li>
+</ul>
+<h2 id="5-common-solutions">5. 📊 Common Solutions</h2>
+<h3 id="common-issues">💻 Common Issues</h3>
+<ol>
+<li>
+<p><strong>Can&rsquo;t connect to network</strong><br />
+   - 🔌 Check physical connections<br />
+   - 🔄 Restart network adapter<br />
+   - 📶 Verify Wi-Fi/Ethernet status</p>
+</li>
+<li>
+<p><strong>Application crashing</strong><br />
+   - 🔄 Restart application<br />
+   - 🔄 Restart computer<br />
+   - 🔄 Reinstall application</p>
+</li>
+<li>
+<p><strong>Slow performance</strong><br />
+   - 💾 Check disk space<br />
+   - 🖥️ Review running processes<br />
+   - 🔄 Restart system</p>
+</li>
+</ol>
+<h2 id="6-performance-metrics">6. 📈 Performance Metrics</h2>
+<h3 id="monthly-report">Monthly Report</h3>
+<pre class="codehilite"><code class="language-markdown"># 📅 Monthly Incident Report - [Month] [Year]
+
+## 📊 Metrics
+- Total Incidents: [Number]
+- Average Resolution Time: [HH:MM]
+- First Call Resolution: XX%
+- SLA Compliance: XX%
+
+## 🏆 Top Performers
+1. [Technician] - [X] resolved
+2. [Technician] - [X] resolved
+
+## 📌 Improvement Areas
+1. [Area 1]
+2. [Area 2]
+</code></pre>
+
+<h2 id="7-templates">7. 📋 Templates</h2>
+<h3 id="status-update-email">📧 Status Update Email</h3>
+<pre class="codehilite"><code class="language-markdown">Subject: [UPDATE] Incident [INC-XXX]: [Brief Description]
+
+Hello [Team/Recipient],
+
+Status Update:
+- Current Status: [In Progress/Resolved]
+- Impact: [Description]
+- Next Update: [Time/Date]
+
+Thank you for your patience.
+
+Best regards,
+[Your Name]
+[Your Position]
+[Contact]
+</code></pre>
+
+<h3 id="handoff-template">🔄 Handoff Template</h3>
+<pre class="codehilite"><code class="language-markdown"># Handoff - [INC-XXX]
+
+## Current Status
+- [ ] Initial assessment complete
+- [ ] Impact verified
+- [ ] Workarounds implemented
+
+## Next Steps
+1. [Action Item 1]
+2. [Action Item 2]
+
+## Notes
+[Additional information]
+</code></pre>
+
+<h2 id="8-post-incident-review">8. 🔍 Post-Incident Review</h2>
+<h3 id="rca-template">RCA Template</h3>
+<pre class="codehilite"><code class="language-markdown"># Root Cause Analysis: [INC-XXX]
+
+## Incident Details
+- Duration: [Start] to [End]
+- Downtime: [Duration]
+- Impact: [High/Medium/Low]
+
+## Timeline
+1. [Time] - [Event]
+2. [Time] - [Action Taken]
+
+## Root Cause
+[Detailed analysis]
+
+## Action Items
+| Task | Owner | Due Date | Status |
+|------|-------|----------|--------|
+| [ ]  |       |          |        |
+</code></pre>
+
+<h2 id="9-quick-reference">9. 🔗 Quick Reference</h2>
+<h3 id="emergency-contacts">Emergency Contacts</h3>
+<ul>
+<li><strong>Network Team</strong>: [Phone/Email]</li>
+<li><strong>Security Team</strong>: [Phone/Email]</li>
+<li><strong>Vendor Support</strong>: [Contact Info]</li>
+</ul>
+<h3 id="useful-commands">Useful Commands</h3>
+<pre class="codehilite"><code class="language-bash"># Check network connectivity
+ping [hostname]
+tracert [IP]
+
+# Check system status
+systeminfo
+tasklist
+
+# Check logs
+eventvwr
+Get-EventLog -LogName System -Newest 20
+</code></pre>
+
+<h2 id="10-knowledge-base">10. 📚 Knowledge Base</h2>
+<h3 id="common-resolutions">Common Resolutions</h3>
+<ul>
+<li>[How to reset passwords]</li>
+<li>[VPN connection issues]</li>
+<li>[Email setup guides]</li>
+</ul>
+<h3 id="documentation">Documentation</h3>
+<ul>
+<li>[Network diagrams]</li>
+<li>[System configurations]</li>
+<li>[Vendor contacts]<br />
+```</li>
+</ul>
+<h2 id="usage-instructions">📝 Usage Instructions</h2>
+<ol>
+<li><strong>Customize</strong> with your organization&rsquo;s details</li>
+<li><strong>Print</strong> the severity matrix and escalation paths</li>
+<li><strong>Share</strong> with your IT team</li>
+<li><strong>Update</strong> regularly with new solutions</li>
+</ol>
+<h2 id="version-history">🔄 Version History</h2>
+<ul>
+<li>v1.0 (2025-09-20): Initial version</li>
+</ul>
+<hr />
+<p><em>Document generated on 2025-09-20</em></p>
+        </main>
+        <footer class="footer">
+            <p>Generated by Markdown to HTML Converter</p>
+        </footer>
+    </div>
+</body>
+</html>

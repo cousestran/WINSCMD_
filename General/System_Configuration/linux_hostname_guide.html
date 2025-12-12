@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Markdown to HTML Converter">
+    <title>linux_hostname_guide</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>linux_hostname_guide</h1>
+            <div class="meta">
+                <span class="last-updated">Last updated: 2025-09-30 21:25:21</span>
+            </div>
+        </header>
+        <main class="content">
+            <h2 id="changing-computer-name-in-linux">Changing Computer Name in Linux</h2>
+<h3 id="understanding-linux-hostnames">Understanding Linux Hostnames</h3>
+<p>In Linux, the hostname is a crucial system identifier used for network communication and system management. A Linux system typically has three types of hostnames:</p>
+<ol>
+<li><strong>Static Hostname</strong>: Set by the system administrator and stored in <code>/etc/hostname</code></li>
+<li><strong>Transient Hostname</strong>: Maintained by the kernel, can be changed at runtime</li>
+<li><strong>Pretty Hostname</strong>: A free-form UTF8 hostname for presentation</li>
+</ol>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Root or sudo privileges</li>
+<li>Access to a terminal</li>
+<li>Basic knowledge of Linux command line</li>
+<li>Backup of important configuration files</li>
+<li>Understanding of your distribution&rsquo;s init system (systemd, SysVinit, etc.)</li>
+</ul>
+<h3 id="method-1-using-hostnamectl-systemd-based-systems">Method 1: Using hostnamectl (systemd-based systems)</h3>
+<p><code>hostnamectl</code> is the modern, recommended tool for managing hostnames on systemd-based Linux distributions (Ubuntu 16.04+, Debian 8+, RHEL/CentOS 7+, Fedora 15+, and others).</p>
+<h4 id="when-to-use-this-method">When to Use This Method</h4>
+<ul>
+<li>Modern Linux distributions with systemd</li>
+<li>When you need to manage all hostname types (static, transient, pretty)</li>
+<li>For scripting and automation purposes</li>
+<li>When you need persistent changes that survive reboots</li>
+</ul>
+<h4 id="step-by-step-guide">Step-by-Step Guide</h4>
+<ol>
+<li><strong>Check Current Hostname Configuration</strong><br />
+   ```bash<br />
+   # Show complete hostname information<br />
+   hostnamectl</li>
+</ol>
+<p># View specific hostname types individually<br />
+   hostname                    # Current hostname (transient if set, otherwise static)<br />
+   hostname -f                 # Fully qualified domain name (FQDN)<br />
+   hostname -s                 # Short hostname (first component of FQDN)<br />
+   hostname -d                 # Domain name (everything after the first dot)<br />
+   hostname -i                 # IP addresses for the hostname</p>
+<p># View the static hostname file<br />
+   cat /etc/hostname</p>
+<p># Check which process is managing the hostname<br />
+   systemctl status systemd-hostnamed<br />
+   ```</p>
+<ol start="2">
+<li><strong>Change the Hostname</strong></li>
+</ol>
+<p><strong>Basic Usage:</strong><br />
+   ```bash<br />
+   # Set the static hostname (persistent across reboots)<br />
+   sudo hostnamectl set-hostname new-hostname</p>
+<p># Set a pretty hostname (for display purposes only, can include spaces and special chars)<br />
+   sudo hostnamectl set-hostname &ndash;pretty &ldquo;New Pretty Hostname&rdquo;</p>
+<p># Set the transient hostname (temporary, lost on reboot)<br />
+   sudo hostnamectl &ndash;transient set-hostname temp-hostname</p>
+<p># Set all three hostname types at once<br />
+   sudo hostnamectl set-hostname new-hostname \<br />
+       &ndash;static \<br />
+       &ndash;transient \<br />
+       &ndash;pretty &ldquo;New Pretty Hostname&rdquo;<br />
+   ```</p>
+<p><strong>Advanced Usage:</strong><br />
+   ```bash<br />
+   # Set hostname with a specific location/chassis type<br />
+   sudo hostnamectl set-hostname &ldquo;web-01&rdquo; &ndash;static \<br />
+       &ndash;pretty &ldquo;Web Server 01 (Production)&rdquo; \<br />
+       &ndash;icon-name &ldquo;computer-server&rdquo; \<br />
+       &ndash;chassis &ldquo;server&rdquo;</p>
+<p># Set hostname from a variable<br />
+   NEW_NAME=&rdquo;app-server-01&rdquo;<br />
+   sudo hostnamectl set-hostname &ldquo;$NEW_NAME&rdquo;</p>
+<p># Set hostname from command output (e.g., AWS instance ID)<br />
+   INSTANCE_ID=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)<br />
+   sudo hostnamectl set-hostname &ldquo;app-${INSTANCE_ID}&rdquo;<br />
+   ```</p>
+<ol start="3">
+<li><strong>Verify the Changes</strong><br />
+   ```bash<br />
+   # Check all hostname types and system information<br />
+   hostnamectl</li>
+</ol>
+<p># Verify the static hostname file<br />
+   cat /etc/hostname</p>
+<p># Check all hostname types individually<br />
+   hostnamectl &ndash;static<br />
+   hostnamectl &ndash;transient<br />
+   hostnamectl &ndash;pretty</p>
+<p># Check if the hostname is valid<br />
+   hostname -f &gt;/dev/null 2&gt;&amp;1 &amp;&amp; echo &ldquo;Hostname is valid&rdquo; || echo &ldquo;Invalid hostname&rdquo;<br />
+   ```</p>
+<ol start="4">
+<li><strong>Update System Configuration</strong><br />
+   ```bash<br />
+   # Update the mailname (used by mail services like postfix)<br />
+   echo &ldquo;new-hostname&rdquo; | sudo tee /etc/mailname</li>
+</ol>
+<p># Update the login banner<br />
+   sudo sed -i &ldquo;s/$(hostname -s)/new-hostname/g&rdquo; /etc/issue<br />
+   sudo sed -i &ldquo;s/$(hostname -s)/new-hostname/g&rdquo; /etc/issue.net</p>
+<p># Update common configuration files<br />
+   for file in /etc/*.conf; do<br />
+       [ -f &ldquo;$file&rdquo; ] &amp;&amp; sudo sed -i &ldquo;s/$(hostname -s)/new-hostname/g&rdquo; &ldquo;$file&rdquo;<br />
+   done</p>
+<p># Update application configurations (examples)<br />
+   if [ -f /etc/nginx/nginx.conf ]; then<br />
+       sudo sed -i &ldquo;s/$(hostname -s)/new-hostname/g&rdquo; /etc/nginx/nginx.conf<br />
+       sudo systemctl restart nginx<br />
+   fi</p>
+<p># Restart system services to apply changes<br />
+   sudo systemctl restart systemd-hostnamed<br />
+   sudo systemctl restart systemd-journald<br />
+   ```</p>
+<h4 id="troubleshooting">Troubleshooting</h4>
+<ol>
+<li><strong>Hostname Not Updating</strong><br />
+   ```bash<br />
+   # Check for conflicting configurations<br />
+   grep -r &ldquo;$(hostname)&rdquo; /etc/</li>
+</ol>
+<p># Restart the hostname service<br />
+   sudo systemctl restart systemd-hostnamed<br />
+   ```</p>
+<ol start="2">
+<li><strong>Network Issues After Renaming</strong><br />
+   ```bash<br />
+   # Flush DNS cache<br />
+   if command -v systemd-resolve &amp;&gt; /dev/null; then<br />
+       sudo systemd-resolve &ndash;flush-caches<br />
+   fi</li>
+</ol>
+<p># Restart network services<br />
+   sudo systemctl restart NetworkManager<br />
+   ```</p>
+<ol start="3">
+<li><strong>Services Not Recognizing New Hostname</strong><br />
+   ```bash<br />
+   # Restart affected services<br />
+   sudo systemctl restart sshd</li>
+</ol>
+<p># Check service logs<br />
+   journalctl -u sshd &ndash;no-pager | tail -n 50<br />
+   ```</p>
+<h4 id="best-practices">Best Practices</h4>
+<ul>
+<li>Always back up configuration files before making changes</li>
+<li>Test hostname changes in a non-production environment first</li>
+<li>Document all changes made to the system</li>
+<li>Consider updating SSL certificates if they include the hostname</li>
+<li>Update monitoring and logging systems with the new hostname</li>
+</ul>
+<h3 id="method-2-editing-configuration-files-all-distributions">Method 2: Editing Configuration Files (All Distributions)</h3>
+<p>For systems without systemd or for more control over the hostname configuration, you can manually edit the necessary configuration files.</p>
+<h4 id="when-to-use-this-method_1">When to Use This Method</h4>
+<ul>
+<li>Older Linux distributions without systemd</li>
+<li>When you need fine-grained control over hostname configuration</li>
+<li>For minimal Linux installations</li>
+<li>When troubleshooting hostname issues</li>
+</ul>
+<h4 id="step-by-step-guide_1">Step-by-Step Guide</h4>
+<ol>
+<li>
+<p><strong>Backup Current Configuration</strong><br />
+<code>bash
+   # Create timestamped backups of important files
+   sudo cp /etc/hostname /etc/hostname.bak.$(date +%Y%m%d)
+   sudo cp /etc/hosts /etc/hosts.bak.$(date +%Y%m%d)</code></p>
+</li>
+<li>
+<p><strong>Update /etc/hostname</strong><br />
+   ```bash<br />
+   # Set the new hostname (replace &lsquo;new-hostname&rsquo; with your desired name)<br />
+   echo &ldquo;new-hostname&rdquo; | sudo tee /etc/hostname</p>
+</li>
+</ol>
+<p># For immediate effect (without reboot)<br />
+   sudo hostname new-hostname<br />
+   ```</p>
+<ol start="3">
+<li><strong>Update /etc/hosts</strong><br />
+   ```bash<br />
+   # Edit the hosts file<br />
+   sudo nano /etc/hosts</li>
+</ol>
+<p># Look for a line like:<br />
+   # 127.0.1.1    old-hostname<br />
+   # Change it to:<br />
+   # 127.0.1.1    new-hostname</p>
+<p># Also update any other occurrences of the old hostname<br />
+   ```</p>
+<ol start="4">
+<li><strong>Update Network Configuration</strong></li>
+</ol>
+<p><strong>For systems using NetworkManager:</strong><br />
+   ```bash<br />
+   # List all connections<br />
+   nmcli connection show</p>
+<p># Update the hostname for a specific connection<br />
+   nmcli connection modify &ldquo;Wired connection 1&rdquo; connection.id &ldquo;new-hostname&rdquo;<br />
+   ```</p>
+<p><strong>For systems using /etc/network/interfaces:</strong><br />
+   ```bash<br />
+   # Edit the network interfaces file<br />
+   sudo nano /etc/network/interfaces</p>
+<p># Add or update the hostname line<br />
+   # hostname new-hostname<br />
+   ```</p>
+<ol start="5">
+<li><strong>Restart Networking Services</strong><br />
+   ```bash<br />
+   # For systemd-based systems<br />
+   sudo systemctl restart systemd-hostnamed<br />
+   sudo systemctl restart NetworkManager</li>
+</ol>
+<p># For SysVinit systems<br />
+   sudo /etc/init.d/hostname.sh restart<br />
+   sudo /etc/init.d/networking restart<br />
+   ```</p>
+<ol start="6">
+<li><strong>Verify the Changes</strong><br />
+   ```bash<br />
+   # Check the current hostname<br />
+   hostname<br />
+   hostname -f</li>
+</ol>
+<p># Check the static hostname<br />
+   cat /etc/hostname</p>
+<p># Check DNS resolution<br />
+   getent hosts new-hostname<br />
+   ping -c 1 new-hostname<br />
+   ```</p>
+<h4 id="troubleshooting_1">Troubleshooting</h4>
+<ol>
+<li>
+<p><strong>Hostname Not Updating</strong><br />
+   - Verify file permissions on /etc/hostname and /etc/hosts<br />
+   - Check for typos in configuration files<br />
+   - Look for conflicting configurations in /etc/sysconfig/network or /etc/network/interfaces<br />
+   - Check system logs for errors: <code>journalctl -xe</code> or <code>dmesg | grep -i hostname</code></p>
+</li>
+<li>
+<p><strong>Network Issues After Renaming</strong><br />
+   - Verify DNS resolution works with the new hostname<br />
+   - Check /etc/nsswitch.conf for proper host resolution order<br />
+   - Restart network services: <code>sudo systemctl restart NetworkManager</code> or <code>sudo service networking restart</code><br />
+   - Check firewall rules if they reference the old hostname</p>
+</li>
+<li>
+<p><strong>Services Not Recognizing New Hostname</strong><br />
+   - Restart affected services<br />
+   - Check service-specific configuration files for hardcoded hostnames<br />
+   - Look for cached hostname information in /var/run or /run<br />
+   - Check application logs for hostname-related errors</p>
+</li>
+</ol>
+<h4 id="best-practices_1">Best Practices</h4>
+<ul>
+<li>Always back up configuration files before making changes</li>
+<li>Test changes in a non-production environment first</li>
+<li>Document all changes made to the system</li>
+<li>Update monitoring and logging systems with the new hostname</li>
+<li>Consider updating SSL certificates if they include the hostname</li>
+<li>Update any scripts or automation that reference the hostname</li>
+<li>Update any configuration management systems (Ansible, Puppet, Chef, etc.)</li>
+<li>Update any backup configurations that might include the hostname</li>
+</ul>
+<h3 id="method-3-using-nmtui-network-manager">Method 3: Using nmtui (Network Manager)</h3>
+<p>The NetworkManager Text User Interface (nmtui) provides a simple, text-based interface to configure network settings, including the hostname, on Linux systems with NetworkManager.</p>
+<h4 id="when-to-use-this-method_2">When to Use This Method</h4>
+<ul>
+<li>When you prefer a guided, menu-driven interface</li>
+<li>For systems with NetworkManager installed</li>
+<li>When you need to configure both hostname and network settings</li>
+<li>For quick, one-time changes without remembering commands</li>
+</ul>
+<h4 id="step-by-step-guide_2">Step-by-Step Guide</h4>
+<ol>
+<li>
+<p><strong>Launch nmtui</strong><br />
+<code>bash
+   sudo nmtui</code></p>
+</li>
+<li>
+<p><strong>Navigate to &ldquo;Set system hostname&rdquo;</strong><br />
+   - Use arrow keys to navigate<br />
+   - Press Enter to select</p>
+</li>
+<li>
+<p><strong>Enter New Hostname</strong><br />
+   - Type the new hostname in the dialog box<br />
+   - Use Tab to switch between fields<br />
+   - Select &ldquo;OK&rdquo; and press Enter</p>
+</li>
+<li>
+<p><strong>Restart NetworkManager</strong><br />
+<code>bash
+   sudo systemctl restart NetworkManager</code></p>
+</li>
+<li>
+<p><strong>Verify Changes</strong><br />
+<code>bash
+   hostnamectl
+   hostname</code></p>
+</li>
+</ol>
+<h4 id="troubleshooting_2">Troubleshooting</h4>
+<ul>
+<li>If nmtui is not installed: <code>sudo apt install network-manager</code> (Debian/Ubuntu) or <code>sudo yum install NetworkManager-tui</code> (RHEL/CentOS)</li>
+<li>If changes don&rsquo;t persist after reboot, check for conflicting configurations in /etc/hostname</li>
+<li>Verify NetworkManager is managing the network: <code>nmcli general status</code></li>
+</ul>
+<h3 id="method-4-using-gui-tools">Method 4: Using GUI Tools</h3>
+<p>For desktop Linux users, graphical tools provide an easy way to change the hostname without using the command line.</p>
+<h4 id="41-gnome-settings-ubuntu-fedora-workstation-etc">4.1 GNOME Settings (Ubuntu, Fedora Workstation, etc.)</h4>
+<ol>
+<li>Open Settings (Super key + type &ldquo;Settings&rdquo;)</li>
+<li>Go to &ldquo;About&rdquo; in the sidebar</li>
+<li>Click the &ldquo;Device Name&rdquo; field</li>
+<li>Enter the new hostname and click &ldquo;Rename&rdquo;</li>
+<li>Authenticate if prompted</li>
+<li>Restart the system for all services to recognize the new hostname</li>
+</ol>
+<h4 id="42-kde-system-settings-kubuntu-kde-plasma">4.2 KDE System Settings (Kubuntu, KDE Plasma)</h4>
+<ol>
+<li>Open System Settings</li>
+<li>Navigate to &ldquo;System Administration&rdquo; &gt; &ldquo;System Information&rdquo;</li>
+<li>Click the &ldquo;Computer Name&rdquo; field</li>
+<li>Enter the new hostname and click &ldquo;Apply&rdquo;</li>
+<li>Authenticate if prompted</li>
+<li>Restart the system for all services to recognize the new hostname</li>
+</ol>
+<h3 id="method-5-for-specific-distributions">Method 5: For Specific Distributions</h3>
+<h4 id="51-debianubuntu-sysvinit">5.1 Debian/Ubuntu (SysVinit)</h4>
+<p>For older Debian/Ubuntu systems using SysVinit:</p>
+<ol>
+<li>
+<p>Edit /etc/hostname:<br />
+<code>bash
+   sudo nano /etc/hostname
+   # Replace with new hostname</code></p>
+</li>
+<li>
+<p>Update /etc/hosts:<br />
+<code>bash
+   sudo nano /etc/hosts
+   # Update 127.0.1.1 line with new hostname</code></p>
+</li>
+<li>
+<p>Set the hostname immediately:<br />
+<code>bash
+   sudo hostname new-hostname</code></p>
+</li>
+<li>
+<p>Restart networking:<br />
+<code>bash
+   sudo /etc/init.d/hostname.sh
+   sudo /etc/init.d/networking restart</code></p>
+</li>
+</ol>
+<h4 id="52-rhelcentos-6-and-earlier">5.2 RHEL/CentOS 6 and Earlier</h4>
+<p>For older RHEL/CentOS systems:</p>
+<ol>
+<li>
+<p>Edit /etc/sysconfig/network:<br />
+<code>bash
+   sudo nano /etc/sysconfig/network
+   # Update HOSTNAME= line</code></p>
+</li>
+<li>
+<p>Update /etc/hosts:<br />
+<code>bash
+   sudo nano /etc/hosts
+   # Update hostname entries</code></p>
+</li>
+<li>
+<p>Set the hostname immediately:<br />
+<code>bash
+   sudo hostname new-hostname</code></p>
+</li>
+<li>
+<p>Restart network services:<br />
+<code>bash
+   sudo service network restart</code></p>
+</li>
+</ol>
+<h3 id="advanced-configuration">Advanced Configuration</h3>
+<h4 id="updating-multiple-configuration-files">Updating Multiple Configuration Files</h4>
+<p>Some applications store the hostname in their configuration files. Common locations to check:</p>
+<pre class="codehilite"><code class="language-bash"># Common configuration files that might contain hostnames
+/etc/mailname
+/etc/postfix/main.cf
+/etc/ssmtp/ssmtp.conf
+/etc/monit/monitrc
+/etc/munin/munin-node.conf
+/etc/collectd/collectd.conf
+/etc/nginx/nginx.conf
+/etc/apache2/sites-available/*
+</code></pre>
+
+<h4 id="handling-services-that-cache-the-hostname">Handling Services That Cache the Hostname</h4>
+<p>Some services cache the hostname on startup. After changing the hostname, you may need to restart these services:</p>
+<pre class="codehilite"><code class="language-bash"># Common services that might need restarting
+sudo systemctl restart sshd
+sudo systemctl restart postfix
+sudo systemctl restart rsyslog
+sudo systemctl restart crond
+</code></pre>
+
+<h4 id="updating-ssl-certificates">Updating SSL Certificates</h4>
+<p>If you&rsquo;re using SSL certificates that include the hostname, you&rsquo;ll need to regenerate them:</p>
+<ol>
+<li>
+<p>Locate your SSL certificate files (common locations):<br />
+<code>bash
+   /etc/ssl/certs/
+   /etc/pki/tls/certs/
+   /etc/letsencrypt/live/</code></p>
+</li>
+<li>
+<p>Regenerate or request new certificates</p>
+</li>
+<li>Update any applications using these certificates</li>
+<li>Restart web servers and other services using SSL</li>
+</ol>
+<h3 id="troubleshooting-common-issues">Troubleshooting Common Issues</h3>
+<h4 id="hostname-not-persisting-after-reboot">Hostname Not Persisting After Reboot</h4>
+<ol>
+<li>
+<p>Check for conflicting configurations:<br />
+<code>bash
+   grep -r "old-hostname" /etc/</code></p>
+</li>
+<li>
+<p>Verify the hostname service is enabled:<br />
+<code>bash
+   sudo systemctl enable systemd-hostnamed</code></p>
+</li>
+<li>
+<p>Check for cloud-init overrides:<br />
+<code>bash
+   cat /etc/cloud/cloud.cfg</code></p>
+</li>
+</ol>
+<h4 id="services-not-recognizing-new-hostname">Services Not Recognizing New Hostname</h4>
+<ol>
+<li>
+<p>Check service logs:<br />
+<code>bash
+   journalctl -u service-name</code></p>
+</li>
+<li>
+<p>Look for hardcoded hostnames:<br />
+<code>bash
+   grep -r "old-hostname" /etc/</code></p>
+</li>
+<li>
+<p>Restart the service:<br />
+<code>bash
+   sudo systemctl restart service-name</code></p>
+</li>
+</ol>
+<h4 id="network-issues-after-renaming">Network Issues After Renaming</h4>
+<ol>
+<li>
+<p>Flush DNS caches:<br />
+<code>bash
+   sudo systemd-resolve --flush-caches
+   sudo systemctl restart systemd-resolved</code></p>
+</li>
+<li>
+<p>Check /etc/hosts for incorrect entries</p>
+</li>
+<li>Verify network manager configuration:<br />
+<code>bash
+   nmcli general status
+   nmcli connection show</code></li>
+</ol>
+<h3 id="security-considerations">Security Considerations</h3>
+<h4 id="ssh-host-keys">SSH Host Keys</h4>
+<p>When changing the hostname, consider regenerating SSH host keys to avoid potential security warnings:</p>
+<pre class="codehilite"><code class="language-bash"># Backup existing keys
+sudo cp -r /etc/ssh /etc/ssh.backup.$(date +%Y%m%d)
+
+# Remove old keys
+sudo rm /etc/ssh/ssh_host_*
+
+# Generate new keys
+sudo dpkg-reconfigure openssh-server
+
+# Restart SSH service
+sudo systemctl restart sshd
+</code></pre>
+
+<h4 id="ssltls-certificates">SSL/TLS Certificates</h4>
+<ol>
+<li>Update any SSL/TLS certificates that include the hostname</li>
+<li>Check certificate validity:<br />
+<code>bash
+   openssl x509 -in /path/to/cert.pem -text | grep -i subject</code></li>
+<li>Update certificate revocation lists (CRLs) if needed</li>
+</ol>
+<h4 id="service-specific-configurations">Service-Specific Configurations</h4>
+<p>Check and update configurations for:<br />
+- Web servers (Apache, Nginx)<br />
+- Database servers (MySQL, PostgreSQL)<br />
+- Mail servers (Postfix, Sendmail)<br />
+- Monitoring systems (Nagios, Zabbix)<br />
+- Backup solutions<br />
+- Configuration management tools</p>
+<h3 id="best-practices_2">Best Practices</h3>
+<h4 id="naming-conventions">Naming Conventions</h4>
+<ul>
+<li>Use only lowercase letters, numbers, and hyphens</li>
+<li>Keep names short but descriptive (e.g., &lsquo;web01&rsquo;, &lsquo;db-prod-01&rsquo;)</li>
+<li>Avoid special characters and underscores</li>
+<li>Follow organizational naming standards if they exist</li>
+<li>Document the naming convention being used</li>
+</ul>
+<h4 id="documentation">Documentation</h4>
+<ul>
+<li>Keep a record of all hostname changes</li>
+<li>Document the reason for the change</li>
+<li>Note any services or applications affected</li>
+<li>Update network diagrams and system documentation</li>
+<li>Inform relevant teams about the change</li>
+</ul>
+<h4 id="testing">Testing</h4>
+<ul>
+<li>Test hostname changes in a development environment first</li>
+<li>Verify all critical services after the change</li>
+<li>Check network connectivity from other systems</li>
+<li>Test any automation or monitoring systems</li>
+<li>Have a rollback plan in case of issues</li>
+<li>Schedule changes during maintenance windows</li>
+</ul>
+        </main>
+        <footer class="footer">
+            <p>Generated by Markdown to HTML Converter</p>
+        </footer>
+    </div>
+</body>
+</html>

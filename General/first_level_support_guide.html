@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Markdown to HTML Converter">
+    <title>first_level_support_guide</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>first_level_support_guide</h1>
+            <div class="meta">
+                <span class="last-updated">Last updated: 2025-10-01 20:45:11</span>
+            </div>
+        </header>
+        <main class="content">
+            <h1 id="first-level-support-quick-reference-guide">🛠️ First-Level Support Quick Reference Guide</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#1-authentication-issues">Authentication Issues</a><br />
+   - <a href="#11-password-resets">1.1 Password Resets</a></li>
+<li><a href="#2-network-connectivity">Network Connectivity</a><br />
+   - <a href="#21-wifi-connection">2.1 WiFi Connection</a><br />
+   - <a href="#22-wired-connection">2.2 Wired Connection</a></li>
+<li><a href="#3-email-setup--issues">Email Setup &amp; Issues</a><br />
+   - <a href="#31-outlook-configuration">3.1 Outlook Configuration</a><br />
+   - <a href="#32-common-email-problems">3.2 Common Email Problems</a></li>
+<li><a href="#4-software-support">Software Support</a><br />
+   - <a href="#41-common-applications">4.1 Common Applications</a><br />
+   - <a href="#42-software-installation">4.2 Software Installation</a></li>
+<li><a href="#5-hardware-troubleshooting">Hardware Troubleshooting</a><br />
+   - <a href="#51-quick-checks">5.1 Quick Checks</a><br />
+   - <a href="#52-common-devices">5.2 Common Devices</a></li>
+<li><a href="#6-account-management">Account Management</a><br />
+   - <a href="#61-new-employee-setup">6.1 New Employee Setup</a><br />
+   - <a href="#62-account-modifications">6.2 Account Modifications</a></li>
+<li><a href="#7-remote-support-tools">Remote Support Tools</a><br />
+   - <a href="#71-quick-assist-windows">7.1 Quick Assist (Windows)</a></li>
+<li><a href="#8-knowledge-base">Knowledge Base</a><br />
+   - <a href="#81-top-solutions">8.1 Top Solutions</a></li>
+<li><a href="#9-escalation-guidelines">Escalation Guidelines</a><br />
+   - <a href="#91-when-to-escalate">9.1 When to Escalate</a><br />
+   - <a href="#92-escalation-information">9.2 Escalation Information</a></li>
+<li><a href="#10-common-commands">Common Commands</a><ul>
+<li><a href="#101-windows-cmd">10.1 Windows CMD</a></li>
+<li><a href="#102-macos-terminal">10.2 macOS Terminal</a></li>
+</ul>
+</li>
+<li><a href="#11-quick-reference-tables">Quick Reference Tables</a><ul>
+<li><a href="#111-common-ports">11.1 Common Ports</a></li>
+<li><a href="#112-file-paths">11.2 File Paths</a></li>
+</ul>
+</li>
+<li><a href="#12-customer-service-tips">Customer Service Tips</a><ul>
+<li><a href="#121-communication-guidelines">12.1 Communication Guidelines</a></li>
+<li><a href="#122-difficult-situations">12.2 Difficult Situations</a></li>
+</ul>
+</li>
+</ol>
+<hr />
+<h1 id="first-level-support-quick-reference-guide_1">First-Level Support Quick Reference Guide</h1>
+<h2 id="1-authentication-issues">1. Authentication Issues</h2>
+<h3 id="11-password-resets">1.1 Password Resets</h3>
+<p><strong>Steps</strong>:<br />
+1. Verify user identity (Full name, ID, department)<br />
+2. Guide to self-service: <a href="https://password.university.edu/reset">password.university.edu/reset</a><br />
+3. If locked out, manually unlock account in Active Directory</p>
+<p><strong>Common Issues</strong>:<br />
+- &ldquo;Account locked&rdquo; → Unlock in AD<br />
+- &ldquo;Invalid credentials&rdquo; → Verify username format (firstname.lastname)<br />
+- &ldquo;Password doesn&rsquo;t meet requirements&rdquo; → Explain requirements</p>
+<h2 id="2-network-connectivity">2. Network Connectivity</h2>
+<h3 id="21-wifi-connection">2.1 WiFi Connection</h3>
+<pre class="codehilite"><code class="language-markdown">1. Verify WiFi is enabled (Windows: Win+A &gt; Network icon)
+2. Select &quot;UNI-Secure&quot; network
+3. Enter username@university.edu and password
+4. Accept certificate if prompted
+</code></pre>
+
+<h3 id="22-wired-connection">2.2 Wired Connection</h3>
+<pre class="codehilite"><code class="language-markdown">1. Check both ends of Ethernet cable
+2. Look for amber/green lights on port
+3. Run network troubleshooter:
+   - Windows: Right-click network icon &gt; Troubleshoot
+   - Mac: Apple Menu &gt; System Settings &gt; Network &gt; Assist me
+</code></pre>
+
+<h2 id="3-email-setup-issues">3. Email Setup &amp; Issues</h2>
+<h3 id="31-outlook-configuration">3.1 Outlook Configuration</h3>
+<p><strong>IMAP Settings</strong>:</p>
+<pre class="codehilite"><code>Incoming: imap.university.edu
+Outgoing: smtp.university.edu
+Ports: 993 (IMAP), 587 (SMTP)
+Authentication: OAuth2 (preferred) or Basic
+</code></pre>
+
+<h3 id="32-common-email-problems">3.2 Common Email Problems</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Quick Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Can&rsquo;t send</td>
+<td>Check SMTP settings, verify authentication</td>
+</tr>
+<tr>
+<td>Can&rsquo;t receive</td>
+<td>Verify IMAP settings, check storage quota</td>
+</tr>
+<tr>
+<td>Sync issues</td>
+<td>Rebuild Outlook profile</td>
+</tr>
+<tr>
+<td>Spam filtering</td>
+<td>Whitelist domain, check Junk folder</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-software-support">4. Software Support</h2>
+<h3 id="41-common-applications">4.1 Common Applications</h3>
+<table>
+<thead>
+<tr>
+<th>Software</th>
+<th>Installation Path</th>
+<th>Common Issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Zoom</td>
+<td><a href="https://zoom.us/download">Zoom Download</a></td>
+<td>Audio/Video settings</td>
+</tr>
+<tr>
+<td>Microsoft 365</td>
+<td><a href="https://portal.office.com">Office Portal</a></td>
+<td>Activation errors</td>
+</tr>
+<tr>
+<td>Adobe Creative Cloud</td>
+<td><a href="https://creativecloud.adobe.com">Adobe</a></td>
+<td>License limits</td>
+</tr>
+<tr>
+<td>VPN Client</td>
+<td><a href="https://vpn.university.edu">VPN Setup</a></td>
+<td>Connection drops</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-software-installation">4.2 Software Installation</h3>
+<p><strong>Standard Process</strong>:<br />
+1. Check if software is in Self-Service Portal<br />
+2. Verify user has necessary permissions<br />
+3. If admin rights needed, submit ticket with justification</p>
+<h2 id="5-hardware-troubleshooting">5. Hardware Troubleshooting</h2>
+<h3 id="51-quick-checks">5.1 Quick Checks</h3>
+<pre class="codehilite"><code class="language-markdown">1. Restart the device
+2. Check all cables and connections
+3. Verify power source
+4. Try different USB port/cable
+</code></pre>
+
+<h3 id="52-common-devices">5.2 Common Devices</h3>
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>Issue</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Printer</td>
+<td>Offline</td>
+<td>Check network/power, restart print spooler</td>
+</tr>
+<tr>
+<td>Monitor</td>
+<td>No signal</td>
+<td>Check cables, try different port</td>
+</tr>
+<tr>
+<td>Keyboard/Mouse</td>
+<td>Not working</td>
+<td>Try different USB port, replace batteries</td>
+</tr>
+<tr>
+<td>Webcam</td>
+<td>Not detected</td>
+<td>Check privacy settings, reinstall drivers</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6-account-management">6. Account Management</h2>
+<h3 id="61-new-employee-setup">6.1 New Employee Setup</h3>
+<p><strong>Checklist</strong>:<br />
+- [ ] Create AD account<br />
+- [ ] Assign email license<br />
+- [ ] Add to department groups<br />
+- [ ] Set up hardware (if applicable)<br />
+- [ ] Schedule orientation</p>
+<h3 id="62-account-modifications">6.2 Account Modifications</h3>
+<ul>
+<li>Password resets: Self-service or manual reset</li>
+<li>Group membership changes: Submit ticket with manager approval</li>
+<li>Access requests: Department head approval required</li>
+</ul>
+<h2 id="7-remote-support-tools">7. Remote Support Tools</h2>
+<h3 id="71-quick-assist-windows">7.1 Quick Assist (Windows)</h3>
+<ol>
+<li>Open Start &gt; Quick Assist</li>
+<li>Select &ldquo;Get assistance&rdquo;</li>
+<li>Share 6-digit code with user</li>
+<li>User enters code at <a href="https://aka.ms/quickassist">aka.ms/quickassist</a></li>
+</ol>
+<h2 id="8-knowledge-base">8. Knowledge Base</h2>
+<h3 id="81-top-solutions">8.1 Top Solutions</h3>
+<ol>
+<li><a href="https://kb.university.edu/1234">How to connect to VPN</a></li>
+<li><a href="https://kb.university.edu/1235">Setting up MFA</a></li>
+<li><a href="https://kb.university.edu/1236">Printing from personal devices</a></li>
+<li><a href="https://kb.university.edu/1237">Software download instructions</a></li>
+</ol>
+<h2 id="9-escalation-guidelines">9. Escalation Guidelines</h2>
+<h3 id="91-when-to-escalate">9.1 When to Escalate</h3>
+<ul>
+<li>Issue requires admin rights</li>
+<li>Multiple users affected</li>
+<li>Potential security incident</li>
+<li>No resolution after standard troubleshooting</li>
+</ul>
+<h3 id="92-escalation-information">9.2 Escalation Information</h3>
+<p>Include in ticket:<br />
+- Steps already taken<br />
+- Error messages<br />
+- User impact<br />
+- Any workarounds attempted</p>
+<h2 id="10-common-commands">10. Common Commands</h2>
+<h3 id="101-windows-cmd">10.1 Windows CMD</h3>
+<pre class="codehilite"><code class="language-batch">:: Network
+ipconfig /all
+ping google.com
+nslookup university.edu
+
+:: System
+systeminfo
+sfc /scannow
+dism /online /cleanup-image /restorehealth
+
+:: User Management
+net user [username] /domain
+whoami /groups
+</code></pre>
+
+<h3 id="102-macos-terminal">10.2 macOS Terminal</h3>
+<pre class="codehilite"><code class="language-bash"># Network
+ifconfig
+netstat -an | grep LISTEN
+dig university.edu
+
+# System
+system_profiler SPHardwareDataType
+diskutil list
+df -h
+</code></pre>
+
+<h2 id="11-quick-reference-tables">11. Quick Reference Tables</h2>
+<h3 id="111-common-ports">11.1 Common Ports</h3>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Port</th>
+<th>Protocol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTTP</td>
+<td>80</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>HTTPS</td>
+<td>443</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>RDP</td>
+<td>3389</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>SSH</td>
+<td>22</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>SMTP</td>
+<td>587</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>IMAP</td>
+<td>993</td>
+<td>TCP</td>
+</tr>
+</tbody>
+</table>
+<h3 id="112-file-paths">11.2 File Paths</h3>
+<table>
+<thead>
+<tr>
+<th>Purpose</th>
+<th>Windows Path</th>
+<th>macOS Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hosts file</td>
+<td>C:\Windows\System32\drivers\etc\hosts</td>
+<td>/etc/hosts</td>
+</tr>
+<tr>
+<td>Temp files</td>
+<td>%TEMP%</td>
+<td>/tmp</td>
+</tr>
+<tr>
+<td>Application logs</td>
+<td>Event Viewer</td>
+<td>Console.app</td>
+</tr>
+</tbody>
+</table>
+<h2 id="12-customer-service-tips">12. Customer Service Tips</h2>
+<h3 id="121-communication-guidelines">12.1 Communication Guidelines</h3>
+<ul>
+<li>Use simple, non-technical language</li>
+<li>Confirm understanding</li>
+<li>Set clear expectations</li>
+<li>Follow up as promised</li>
+</ul>
+<h3 id="122-difficult-situations">12.2 Difficult Situations</h3>
+<ol>
+<li><strong>Angry User</strong>: Stay calm, empathize, focus on solution</li>
+<li><strong>Unclear Issue</strong>: Ask open-ended questions</li>
+<li><strong>Repeated Caller</strong>: Verify knowledge base articles shared</li>
+</ol>
+<hr />
+<p><em>Document Version: 1.0<br />
+Last Updated: 2025-09-20</em></p>
+        </main>
+        <footer class="footer">
+            <p>Generated by Markdown to HTML Converter</p>
+        </footer>
+    </div>
+</body>
+</html>

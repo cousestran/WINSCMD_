@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Markdown to HTML Converter">
+    <title>tier1_support_handbook</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>tier1_support_handbook</h1>
+            <div class="meta">
+                <span class="last-updated">Last updated: 2025-10-02 21:52:27</span>
+            </div>
+        </header>
+        <main class="content">
+            <h1 id="tier-1-technical-support-handbook">🛠️ Tier-1 Technical Support Handbook</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<h3 id="1-first-contact-protocol">1. First Contact Protocol</h3>
+<ul>
+<li>1.1 Initial Response Framework</li>
+<li>1.2 Information Gathering Template</li>
+</ul>
+<h3 id="2-common-issues-resolutions">2. Common Issues &amp; Resolutions</h3>
+<ul>
+<li>2.1 Password Resets</li>
+<li>2.2 Network Connectivity</li>
+<li>2.3 Application Issues</li>
+</ul>
+<h3 id="3-documentation-standards">3. Documentation Standards</h3>
+<ul>
+<li>3.1 Ticket Documentation</li>
+<li>3.2 Knowledge Base Updates</li>
+</ul>
+<h3 id="4-escalation-procedures">4. Escalation Procedures</h3>
+<ul>
+<li>4.1 When to Escalate</li>
+<li>4.2 Escalation Template</li>
+</ul>
+<h3 id="5-customer-service-excellence">5. Customer Service Excellence</h3>
+<ul>
+<li>5.1 Communication Tips</li>
+<li>5.2 Call Handling Script</li>
+</ul>
+<h3 id="6-quick-reference-guides">6. Quick Reference Guides</h3>
+<ul>
+<li>6.1 Common Commands</li>
+<li>6.2 Common Issues Cheat Sheet</li>
+</ul>
+<h3 id="7-performance-metrics">7. Performance Metrics</h3>
+<ul>
+<li>7.1 Key Metrics to Track</li>
+<li>7.2 Self-Improvement</li>
+</ul>
+<h3 id="8-security-awareness">8. Security Awareness</h3>
+<ul>
+<li>8.1 Red Flags</li>
+<li>8.2 Reporting Security Incidents</li>
+</ul>
+<h3 id="9-tools-resources">9. Tools &amp; Resources</h3>
+<ul>
+<li>9.1 Essential Software</li>
+<li>9.2 Keyboard Shortcuts</li>
+</ul>
+<h3 id="10-continuous-learning">10. Continuous Learning</h3>
+<ul>
+<li>10.1 Recommended Certifications</li>
+<li>10.2 Learning Resources</li>
+</ul>
+<hr />
+<h2 id="1-first-contact-protocol_1">1. First Contact Protocol</h2>
+<h3 id="11-initial-response-framework">1.1 Initial Response Framework</h3>
+<pre class="codehilite"><code class="language-mermaid">graph TD
+    A[Greet Customer] --&gt; B[Gather Information]
+    B --&gt; C{Issue Understood?}
+    C --&gt;|No| D[Ask Clarifying Questions]
+    C --&gt;|Yes| E[Begin Troubleshooting]
+    D --&gt; B
+    E --&gt; F{Resolved?}
+    F --&gt;|No| G[Escalate to Tier 2]
+    F --&gt;|Yes| H[Document &amp; Close]
+</code></pre>
+
+<h3 id="12-information-gathering-template">1.2 Information Gathering Template</h3>
+<pre class="codehilite"><code class="language-markdown">## Customer Information
+- **Name**: 
+- **Department**: 
+- **Contact**: 
+- **Location/Office**: 
+
+## Issue Details
+- **Reported**: [Date/Time]
+- **Device Type**: [Desktop/Laptop/Mobile]
+- **Operating System**: [Version]
+- **Application**: [Name &amp; Version]
+- **Error Message**: [If any]
+
+## Troubleshooting Steps Taken
+1. [Step 1]
+2. [Step 2]
+3. [Step 3]
+</code></pre>
+
+<h2 id="2-common-issues-resolutions_1">2. Common Issues &amp; Resolutions</h2>
+<h3 id="21-password-resets">2.1 Password Resets</h3>
+<p><strong>Process Flow</strong>:<br />
+1. Verify identity (Security Questions/Manager Approval)<br />
+2. Reset password following policy:<br />
+   - Minimum 12 characters<br />
+   - Complexity requirements<br />
+   - Password history<br />
+3. Enforce password change on next login<br />
+4. Verify MFA setup</p>
+<p><strong>Common Commands</strong>:</p>
+<pre class="codehilite"><code class="language-powershell"># Active Directory
+Reset-ADAccountPassword -Identity username -Reset -NewPassword (ConvertTo-SecureString &quot;TempP@ss123&quot; -AsPlainText -Force)
+Set-ADUser -Identity username -ChangePasswordAtLogon $true
+
+# Office 365
+Connect-MsolService
+Set-MsolUserPassword -UserPrincipalName user@domain.com -NewPassword &quot;TempP@ss123&quot; -ForceChangePassword $true
+</code></pre>
+
+<h3 id="22-network-connectivity">2.2 Network Connectivity</h3>
+<p><strong>Troubleshooting Steps</strong>:<br />
+1. Verify physical connections<br />
+2. Check IP configuration:<br />
+<code>batch
+   ipconfig /all
+   ping 8.8.8.8
+   tracert google.com
+   nslookup google.com</code><br />
+3. Reset network stack:<br />
+<code>batch
+   netsh winsock reset
+   netsh int ip reset
+   ipconfig /release
+   ipconfig /renew
+   ipconfig /flushdns</code></p>
+<h3 id="23-application-issues">2.3 Application Issues</h3>
+<p><strong>Common Fixes</strong>:<br />
+1. Restart the application<br />
+2. Clear application cache<br />
+3. Repair installation:<br />
+<code>powershell
+   # Office 365
+   cd "C:\Program Files\Common Files\Microsoft Shared\ClickToRun"
+   OfficeC2RClient.exe /update user updatetoversion=16.0.xxxxx.xxxx</code><br />
+4. Check for updates<br />
+5. Reinstall if necessary</p>
+<h2 id="3-documentation-standards_1">3. Documentation Standards</h2>
+<h3 id="31-ticket-documentation">3.1 Ticket Documentation</h3>
+<pre class="codehilite"><code class="language-markdown">## Issue Description
+[Detailed description of the problem]
+
+## Troubleshooting Steps
+1. [Step 1] - [Result]
+2. [Step 2] - [Result]
+3. [Step 3] - [Result]
+
+## Resolution
+[Detailed solution implemented]
+
+## Customer Communication
+[Summary of communication with customer]
+
+## Time Spent
+[Start Time] - [End Time] = [Total Time]
+</code></pre>
+
+<h3 id="32-knowledge-base-updates">3.2 Knowledge Base Updates</h3>
+<p>When documenting new solutions:<br />
+1. Use clear, concise language<br />
+2. Include screenshots when helpful<br />
+3. List prerequisites<br />
+4. Provide step-by-step instructions<br />
+5. Add related articles</p>
+<h2 id="4-escalation-procedures_1">4. Escalation Procedures</h2>
+<h3 id="41-when-to-escalate">4.1 When to Escalate</h3>
+<ul>
+<li>Issue exceeds 15-minute troubleshooting</li>
+<li>Root cause requires higher permissions</li>
+<li>Multiple users affected</li>
+<li>Potential security incident</li>
+</ul>
+<h3 id="42-escalation-template">4.2 Escalation Template</h3>
+<pre class="codehilite"><code class="language-markdown">## Escalation Request
+**Ticket #**: [Number]  
+**Customer**: [Name]  
+**Issue**: [Brief description]  
+**Troubleshooting Done**:  
+1. [Step 1]  
+2. [Step 2]  
+3. [Step 3]  
+
+**Requested Action**:  
+[What you need from the next tier]
+
+**Urgency**: [High/Medium/Low]  
+**Business Impact**: [Description]  
+</code></pre>
+
+<h2 id="5-customer-service-excellence_1">5. Customer Service Excellence</h2>
+<h3 id="51-communication-tips">5.1 Communication Tips</h3>
+<ul>
+<li>Use positive language</li>
+<li>Avoid technical jargon</li>
+<li>Set clear expectations</li>
+<li>Confirm understanding</li>
+<li>Express empathy</li>
+</ul>
+<h3 id="52-call-handling-script">5.2 Call Handling Script</h3>
+<pre class="codehilite"><code>&quot;Thank you for calling [Company] IT Helpdesk. This is [Your Name]. How can I assist you today?&quot;
+
+[After customer explains]
+
+&quot;I understand you're experiencing [repeat issue]. Let me help you with that.&quot;
+[If needed] &quot;To better assist you, may I ask a few questions?&quot;
+
+[After resolution]
+&quot;Is there anything else I can help you with today?&quot;
+&quot;Thank you for contacting [Company] IT Helpdesk. Have a great day!&quot;
+</code></pre>
+
+<h2 id="6-quick-reference-guides_1">6. Quick Reference Guides</h2>
+<h3 id="61-common-commands">6.1 Common Commands</h3>
+<table>
+<thead>
+<tr>
+<th>Purpose</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Check disk space</td>
+<td><code>wmic logicaldisk get size,freespace,caption</code></td>
+</tr>
+<tr>
+<td>List running processes</td>
+<td><code>tasklist</code></td>
+</tr>
+<tr>
+<td>Check service status</td>
+<td><code>sc query "service name"</code></td>
+</tr>
+<tr>
+<td>Remote desktop</td>
+<td><code>mstsc /v:computername</code></td>
+</tr>
+<tr>
+<td>Check open ports</td>
+<td><code>netstat -ano</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="62-common-issues-cheat-sheet">6.2 Common Issues Cheat Sheet</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>First Steps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Can&rsquo;t log in</td>
+<td>Verify caps lock, check account status</td>
+</tr>
+<tr>
+<td>No internet</td>
+<td>Check network cables, restart router</td>
+</tr>
+<tr>
+<td>Printer not working</td>
+<td>Check connections, restart print spooler</td>
+</tr>
+<tr>
+<td>Slow computer</td>
+<td>Check task manager, restart if needed</td>
+</tr>
+<tr>
+<td>Blue screen</td>
+<td>Note error code, check system logs</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-performance-metrics_1">7. Performance Metrics</h2>
+<h3 id="71-key-metrics-to-track">7.1 Key Metrics to Track</h3>
+<ul>
+<li><strong>First Call Resolution Rate</strong></li>
+<li><strong>Average Handle Time</strong></li>
+<li><strong>Customer Satisfaction Score</strong></li>
+<li><strong>Ticket Volume by Category</strong></li>
+<li><strong>Resolution Time</strong></li>
+</ul>
+<h3 id="72-self-improvement">7.2 Self-Improvement</h3>
+<pre class="codehilite"><code class="language-markdown">## Weekly Self-Review
+**Week**: [Date Range]  
+**Tickets Handled**: [Number]  
+**Areas of Strength**:  
+- [Strength 1]  
+- [Strength 2]  
+
+**Areas for Improvement**:  
+- [Area 1]  
+- [Area 2]  
+
+**Goals for Next Week**:  
+1. [Goal 1]  
+2. [Goal 2]  
+</code></pre>
+
+<h2 id="8-security-awareness_1">8. Security Awareness</h2>
+<h3 id="81-red-flags">8.1 Red Flags</h3>
+<ul>
+<li>Requests for password resets without verification</li>
+<li>Unusual remote access requests</li>
+<li>Multiple failed login attempts</li>
+<li>Suspicious email attachments</li>
+<li>Unauthorized software installation</li>
+</ul>
+<h3 id="82-reporting-security-incidents">8.2 Reporting Security Incidents</h3>
+<ol>
+<li>Document all details</li>
+<li>Preserve evidence (screenshots, logs)</li>
+<li>Notify security team immediately</li>
+<li>Follow company incident response plan</li>
+</ol>
+<h2 id="9-tools-resources_1">9. Tools &amp; Resources</h2>
+<h3 id="91-essential-software">9.1 Essential Software</h3>
+<ul>
+<li>Remote Support: TeamViewer, AnyDesk</li>
+<li>System Utilities: ADUC, PowerShell, CMD</li>
+<li>Monitoring: PRTG, SolarWinds</li>
+<li>Documentation: IT Glue, Confluence</li>
+</ul>
+<h3 id="92-keyboard-shortcuts">9.2 Keyboard Shortcuts</h3>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Windows</th>
+<th>Mac</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lock PC</td>
+<td>Win + L</td>
+<td>Cmd + Ctrl + Q</td>
+</tr>
+<tr>
+<td>Task Manager</td>
+<td>Ctrl + Shift + Esc</td>
+<td>Cmd + Option + Esc</td>
+</tr>
+<tr>
+<td>Switch Apps</td>
+<td>Alt + Tab</td>
+<td>Cmd + Tab</td>
+</tr>
+<tr>
+<td>Screenshot</td>
+<td>Win + Shift + S</td>
+<td>Cmd + Shift + 4</td>
+</tr>
+</tbody>
+</table>
+<h2 id="10-continuous-learning_1">10. Continuous Learning</h2>
+<h3 id="101-recommended-certifications">10.1 Recommended Certifications</h3>
+<ul>
+<li>CompTIA A+</li>
+<li>Microsoft 365 Fundamentals</li>
+<li>ITIL Foundation</li>
+<li>HDI Desktop Support Technician</li>
+</ul>
+<h3 id="102-learning-resources">10.2 Learning Resources</h3>
+<ul>
+<li><strong>Microsoft Learn</strong>: https://learn.microsoft.com</li>
+<li><strong>Professor Messer</strong>: https://www.professormesser.com</li>
+<li><strong>Udemy IT Courses</strong>: https://www.udemy.com</li>
+<li><strong>TechNet Forums</strong>: https://social.technet.microsoft.com/Forums</li>
+</ul>
+<hr />
+<p><em>Document Version: 1.0<br />
+Last Updated: 2025-09-20</em></p>
+        </main>
+        <footer class="footer">
+            <p>Generated by Markdown to HTML Converter</p>
+        </footer>
+    </div>
+</body>
+</html>

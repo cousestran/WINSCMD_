@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Markdown to HTML Converter">
+    <title>user_account_management</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>user_account_management</h1>
+            <div class="meta">
+                <span class="last-updated">Last updated: 2025-10-02 21:54:08</span>
+            </div>
+        </header>
+        <main class="content">
+            <h1 id="user-account-access-management-guide">👥 User Account &amp; Access Management Guide</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<h3 id="1-account-lifecycle-management">1. <a href="#1-account-lifecycle-management">Account Lifecycle Management</a></h3>
+<ul>
+<li><a href="#11-account-creation-process">1.1 Account Creation Process</a></li>
+<li><a href="#12-account-modification">1.2 Account Modification</a></li>
+</ul>
+<h3 id="2-access-control-framework">2. <a href="#2-access-control-framework">Access Control Framework</a></h3>
+<ul>
+<li><a href="#21-role-based-access-control-rbac">2.1 Role-Based Access Control (RBAC)</a></li>
+<li><a href="#22-permission-groups">2.2 Permission Groups</a></li>
+</ul>
+<h3 id="3-security-policies">3. <a href="#3-security-policies">Security Policies</a></h3>
+<ul>
+<li><a href="#31-password-requirements">3.1 Password Requirements</a></li>
+<li><a href="#32-multi-factor-authentication-mfa">3.2 Multi-Factor Authentication (MFA)</a></li>
+</ul>
+<h3 id="4-account-auditing">4. <a href="#4-account-auditing">Account Auditing</a></h3>
+<ul>
+<li><a href="#41-monitoring-commands">4.1 Monitoring Commands</a></li>
+<li><a href="#42-security-logs">4.2 Security Logs</a></li>
+</ul>
+<h3 id="5-automation-scripts">5. <a href="#5-automation-scripts">Automation Scripts</a></h3>
+<ul>
+<li><a href="#51-new-user-creation">5.1 New User Creation</a></li>
+<li><a href="#52-account-termination">5.2 Account Termination</a></li>
+</ul>
+<h3 id="6-common-tasks">6. <a href="#6-common-tasks">Common Tasks</a></h3>
+<ul>
+<li><a href="#61-unlock-account">6.1 Unlock Account</a></li>
+<li><a href="#62-check-group-memberships">6.2 Check Group Memberships</a></li>
+</ul>
+<hr />
+<h2 id="1-account-lifecycle-management_1">1. Account Lifecycle Management</h2>
+<h3 id="11-account-creation-process">1.1 Account Creation Process</h3>
+<p><strong>Prerequisites</strong>:<br />
+- Completed access request form<br />
+- Manager approval<br />
+- HR onboarding confirmation</p>
+<p><strong>Creation Steps</strong>:<br />
+1. <strong>Active Directory</strong><br />
+<code>powershell
+   # Create AD User
+   New-ADUser -Name "John Doe" \
+              -GivenName "John" \
+              -Surname "Doe" \
+              -SamAccountName "jdoe" \
+              -UserPrincipalName "jdoe@university.edu" \
+              -Path "OU=Users,DC=university,DC=edu" \
+              -AccountPassword (ConvertTo-SecureString "P@ssw0rd123" -AsPlainText -Force) \
+              -Enabled $true</code></p>
+<ol start="2">
+<li>
+<p><strong>Email Setup</strong><br />
+<code>powershell
+   # Enable Exchange Mailbox
+   Enable-Mailbox -Identity jdoe@university.edu</code></p>
+</li>
+<li>
+<p><strong>Group Memberships</strong><br />
+   ```powershell<br />
+   # Add to Department Group<br />
+   Add-ADGroupMember -Identity &ldquo;Faculty_Staff&rdquo; -Members jdoe</p>
+</li>
+</ol>
+<p># Add to Role Groups<br />
+   Add-ADGroupMember -Identity &ldquo;Staff_Access&rdquo; -Members jdoe<br />
+   ```</p>
+<h3 id="12-account-modification">1.2 Account Modification</h3>
+<p><strong>Common Operations</strong>:<br />
+- Password resets<br />
+- Group membership changes<br />
+- Account enable/disable<br />
+- Profile updates</p>
+<p><strong>Example</strong>: Reset Password</p>
+<pre class="codehilite"><code class="language-powershell"># Reset password and require change at next login
+Set-ADAccountPassword -Identity jdoe -NewPassword (ConvertTo-SecureString &quot;NewP@ss123&quot; -AsPlainText -Force)
+Set-ADUser -Identity jdoe -ChangePasswordAtLogon $true
+</code></pre>
+
+<h2 id="2-access-control-framework_1">2. Access Control Framework</h2>
+<h3 id="21-role-based-access-control-rbac">2.1 Role-Based Access Control (RBAC)</h3>
+<p><strong>Standard Roles</strong>:<br />
+| Role | Access Level | Example Groups |<br />
+|------|-------------|----------------|<br />
+| Faculty | Department resources | FAC_DeptName, FAC_Email |<br />
+| Staff | Office applications | STAFF_Dept, STAFF_Printers |<br />
+| Student | Academic resources | STU_Year, STU_Major |<br />
+| Contractor | Limited access | CONT_ProjectName |</p>
+<h3 id="22-permission-groups">2.2 Permission Groups</h3>
+<p><strong>Naming Convention</strong>:<br />
+- <code>APP_ApplicationName_Role</code> (e.g., <code>APP_Finance_ReadOnly</code>)<br />
+- <code>DEPT_DepartmentName_Access</code> (e.g., <code>DEPT_HR_Full</code>)<br />
+- <code>LOC_Location_Resource</code> (e.g., <code>LOC_BuildingA_Printers</code>)</p>
+<h2 id="3-security-policies_1">3. Security Policies</h2>
+<h3 id="31-password-requirements">3.1 Password Requirements</h3>
+<ul>
+<li>Minimum length: 12 characters</li>
+<li>Complexity: Upper, lower, number, special char</li>
+<li>History: 24 previous passwords remembered</li>
+<li>Maximum age: 90 days</li>
+<li>Account lockout: 5 attempts, 30-minute lockout</li>
+</ul>
+<h3 id="32-multi-factor-authentication-mfa">3.2 Multi-Factor Authentication (MFA)</h3>
+<p><strong>Implementation</strong>:<br />
+1. Enable MFA in Azure AD<br />
+2. Configure conditional access policies<br />
+3. Enroll user devices</p>
+<p><strong>Troubleshooting</strong>:</p>
+<pre class="codehilite"><code class="language-powershell"># Check MFA status
+Get-MsolUser -UserPrincipalName jdoe@university.edu | Select-Object DisplayName,StrongAuthenticationMethods
+</code></pre>
+
+<h2 id="4-account-auditing_1">4. Account Auditing</h2>
+<h3 id="41-monitoring-commands">4.1 Monitoring Commands</h3>
+<pre class="codehilite"><code class="language-powershell"># Check last logon time
+Get-ADUser jdoe -Properties LastLogonDate | Select-Object Name,LastLogonDate
+
+# Find inactive accounts (90+ days)
+Search-ADAccount -AccountInactive -TimeSpan 90.00:00:00 | 
+    Where-Object {$_.Enabled -eq $true} |
+    Select-Object Name, SamAccountName, LastLogonDate
+</code></pre>
+
+<h3 id="42-security-logs">4.2 Security Logs</h3>
+<p><strong>Key Events to Monitor</strong>:<br />
+- 4624: Successful logon<br />
+- 4625: Failed logon<br />
+- 4720: User account created<br />
+- 4726: User account deleted<br />
+- 4738: User account changed</p>
+<h2 id="5-automation-scripts_1">5. Automation Scripts</h2>
+<h3 id="51-new-user-creation">5.1 New User Creation</h3>
+<pre class="codehilite"><code class="language-powershell"># New-UserOnboarding.ps1
+param(
+    [Parameter(Mandatory=$true)]
+    [string]$FirstName,
+    [string]$LastName,
+    [string]$Department,
+    [string]$Title
+)
+
+# Generate username (first initial + lastname)
+$Username = ($FirstName[0] + $LastName).ToLower()
+$Email = &quot;$Username@university.edu&quot;
+$OU = &quot;OU=Users,OU=$Department,DC=university,DC=edu&quot;
+$TempPassword = [System.Web.Security.Membership]::GeneratePassword(12, 3)
+
+# Create AD Account
+try {
+    New-ADUser -Name &quot;$FirstName $LastName&quot; \
+               -GivenName $FirstName \
+               -Surname $LastName \
+               -SamAccountName $Username \
+               -UserPrincipalName $Email \
+               -Path $OU \
+               -Title $Title \
+               -Department $Department \
+               -AccountPassword (ConvertTo-SecureString $TempPassword -AsPlainText -Force) \
+               -Enabled $true \
+               -ChangePasswordAtLogon $true
+
+    # Add to department group
+    Add-ADGroupMember -Identity &quot;GRP_$Department&quot; -Members $Username
+
+    # Log creation
+    Write-Host &quot;User $Username created successfully with temporary password&quot;
+    return $TempPassword
+} 
+catch {
+    Write-Error &quot;Failed to create user: $_&quot;
+    exit 1
+}
+</code></pre>
+
+<h3 id="52-account-termination">5.2 Account Termination</h3>
+<pre class="codehilite"><code class="language-powershell"># Disable-UserAccount.ps1
+param(
+    [Parameter(Mandatory=$true)]
+    [string]$Username
+)
+
+try {
+    # Disable account
+    Disable-ADAccount -Identity $Username
+
+    # Remove group memberships (except Domain Users)
+    $Groups = Get-ADPrincipalGroupMembership $Username | Where-Object {$_.Name -ne &quot;Domain Users&quot;}
+    Remove-ADPrincipalGroupMembership -Identity $Username -MemberOf $Groups -Confirm:$false
+
+    # Move to Disabled Users OU
+    Get-ADUser $Username | Move-ADObject -TargetPath &quot;OU=Disabled,DC=university,DC=edu&quot;
+
+    # Set description with termination date
+    $TermDate = Get-Date -Format &quot;yyyy-MM-dd&quot;
+    Set-ADUser $Username -Description &quot;Terminated $TermDate&quot;
+
+    Write-Host &quot;Account $Username has been disabled and moved to Disabled OU.&quot;
+}
+catch {
+    Write-Error &quot;Error disabling account: $_&quot;
+}
+</code></pre>
+
+<h2 id="6-common-tasks_1">6. Common Tasks</h2>
+<h3 id="61-unlock-account">6.1 Unlock Account</h3>
+<pre class="codehilite"><code class="language-powershell">Unlock-ADAccount -Identity jdoe
+</code></pre>
+
+<h3 id="62-check-group-memberships">6.2 Check Group Memberships</h3>
+<pre class="codehilite"><code class="language-powershell">Get-ADPrincipalGroupMembership jdoe | Select-Object Name
+</code></pre>
+
+<h3 id="63-find-users-by-department">6.3 Find Users by Department</h3>
+<pre class="codehilite"><code class="language-powershell">Get-ADUser -Filter {Department -eq &quot;Information Technology&quot;} -Properties Department | 
+    Select-Object Name, SamAccountName, Department
+</code></pre>
+
+<h2 id="7-best-practices">7. Best Practices</h2>
+<h3 id="71-account-security">7.1 Account Security</h3>
+<ul>
+<li>Implement least privilege access</li>
+<li>Regular access reviews (quarterly)</li>
+<li>Monitor privileged accounts</li>
+<li>Disable service accounts when not in use</li>
+</ul>
+<h3 id="72-documentation">7.2 Documentation</h3>
+<ul>
+<li>Maintain change logs</li>
+<li>Document access approvals</li>
+<li>Keep org charts updated</li>
+<li>Record access requests</li>
+</ul>
+<h2 id="8-troubleshooting">8. Troubleshooting</h2>
+<h3 id="81-common-issues">8.1 Common Issues</h3>
+<p><strong>Account Lockout</strong></p>
+<pre class="codehilite"><code class="language-powershell"># Check lockout status
+Get-ADUser jdoe -Properties LockedOut | Select-Object Name, LockedOut
+
+# Unlock account
+Unlock-ADAccount -Identity jdoe
+</code></pre>
+
+<p><strong>Permission Issues</strong></p>
+<pre class="codehilite"><code class="language-powershell"># Check effective permissions
+(Get-Acl &quot;C:\Shared&quot;).Access | Format-Table IdentityReference,FileSystemRights,AccessControlType,IsInherited -AutoSize
+</code></pre>
+
+<h2 id="9-compliance-reporting">9. Compliance &amp; Reporting</h2>
+<h3 id="91-monthly-reports">9.1 Monthly Reports</h3>
+<ul>
+<li>New user accounts</li>
+<li>Terminated accounts</li>
+<li>Password resets</li>
+<li>Failed login attempts</li>
+</ul>
+<h3 id="92-access-review">9.2 Access Review</h3>
+<pre class="codehilite"><code class="language-powershell"># Generate access review report
+Get-ADUser -Filter * -Properties MemberOf | 
+    Where-Object {$_.Enabled -eq $true} |
+    Select-Object Name, SamAccountName, 
+        @{Name='Groups';Expression={$_.MemberOf -join ';'}} |
+    Export-CSV &quot;AccessReview_$(Get-Date -Format 'yyyyMM').csv&quot; -NoTypeInformation
+</code></pre>
+
+<h2 id="10-emergency-procedures">10. Emergency Procedures</h2>
+<h3 id="101-security-incident-response">10.1 Security Incident Response</h3>
+<ol>
+<li>Disable compromised accounts</li>
+<li>Reset passwords</li>
+<li>Review logs for suspicious activity</li>
+<li>Notify security team</li>
+</ol>
+<h3 id="102-mass-account-operations">10.2 Mass Account Operations</h3>
+<pre class="codehilite"><code class="language-powershell"># Disable all accounts in OU
+Get-ADUser -Filter * -SearchBase &quot;OU=Temp,DC=university,DC=edu&quot; | 
+    Disable-ADAccount
+
+# Reset passwords for department
+Get-ADUser -Filter {Department -eq &quot;Finance&quot;} | 
+    Set-ADAccountPassword -NewPassword (ConvertTo-SecureString &quot;NewP@ss123&quot; -AsPlainText -Force) -Reset
+</code></pre>
+
+<hr />
+<p><em>Document Version: 1.0<br />
+Last Updated: 2025-09-20</em></p>
+        </main>
+        <footer class="footer">
+            <p>Generated by Markdown to HTML Converter</p>
+        </footer>
+    </div>
+</body>
+</html>

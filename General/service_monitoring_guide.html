@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Markdown to HTML Converter">
+    <title>service_monitoring_guide</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>service_monitoring_guide</h1>
+            <div class="meta">
+                <span class="last-updated">Last updated: 2025-10-02 14:25:45</span>
+            </div>
+        </header>
+        <main class="content">
+            <h1 id="service-monitoring-event-management-guide">📊 Service Monitoring &amp; Event Management Guide</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<h3 id="1-monitoring-framework">1. Monitoring Framework</h3>
+<ul>
+<li>1.1 Monitoring Tiers</li>
+<li>1.2 Key Performance Indicators (KPIs)</li>
+</ul>
+<h3 id="2-monitoring-tools">2. Monitoring Tools</h3>
+<ul>
+<li>2.1 Core Monitoring Stack</li>
+<li>2.2 Network Monitoring Commands</li>
+</ul>
+<h3 id="3-event-management">3. Event Management</h3>
+<ul>
+<li>3.1 Event Classification</li>
+<li>3.2 Event Correlation Rules</li>
+</ul>
+<h3 id="4-alerting-notification">4. Alerting &amp; Notification</h3>
+<ul>
+<li>4.1 Alert Routing</li>
+<li>4.2 Notification Channels</li>
+</ul>
+<h3 id="5-system-health-checks">5. System Health Checks</h3>
+<ul>
+<li>5.1 Automated Health Check Script</li>
+</ul>
+<h3 id="6-log-management">6. Log Management</h3>
+<ul>
+<li>6.1 Key Log Files</li>
+<li>6.2 Log Analysis Commands</li>
+</ul>
+<h3 id="7-incident-response">7. Incident Response</h3>
+<ul>
+<li>7.1 Incident Workflow</li>
+<li>7.2 Post-Incident Report Template</li>
+</ul>
+<h3 id="8-performance-tuning">8. Performance Tuning</h3>
+<ul>
+<li>8.1 Database Optimization</li>
+<li>8.2 Application Performance</li>
+<li>8.3 Network Optimization</li>
+</ul>
+<h3 id="9-security-monitoring">9. Security Monitoring</h3>
+<ul>
+<li>9.1 Intrusion Detection</li>
+<li>9.2 Security Auditing</li>
+<li>9.3 Compliance Checks</li>
+</ul>
+<h3 id="10-documentation-reporting">10. Documentation &amp; Reporting</h3>
+<ul>
+<li>10.1 Runbooks</li>
+<li>10.2 Performance Reports</li>
+<li>10.3 Capacity Planning</li>
+</ul>
+<h3 id="11-best-practices">11. Best Practices</h3>
+<ul>
+<li>11.1 Monitoring Strategy</li>
+<li>11.2 Alert Management</li>
+<li>11.3 Continuous Improvement</li>
+</ul>
+<h3 id="12-tools-integrations">12. Tools &amp; Integrations</h3>
+<ul>
+<li>12.1 Open Source Solutions</li>
+<li>12.2 Commercial Solutions</li>
+<li>12.3 Custom Integrations</li>
+</ul>
+<h3 id="13-training-knowledge-sharing">13. Training &amp; Knowledge Sharing</h3>
+<ul>
+<li>13.1 Team Training</li>
+<li>13.2 Documentation Standards</li>
+<li>13.3 Knowledge Base</li>
+</ul>
+<h3 id="14-appendix">14. Appendix</h3>
+<ul>
+<li>14.1 Glossary</li>
+<li>14.2 References</li>
+<li>14.3 Additional Resources</li>
+</ul>
+<hr />
+<h2 id="1-monitoring-framework_1">1. Monitoring Framework</h2>
+<h2 id="1-monitoring-framework_2">1. Monitoring Framework</h2>
+<h3 id="11-monitoring-tiers">1.1 Monitoring Tiers</h3>
+<pre class="codehilite"><code class="language-mermaid">graph TD
+    A[Infrastructure] --&gt; B[Servers, Network, Storage]
+    C[Applications] --&gt; D[Web Services, APIs, Databases]
+    E[End-User] --&gt; F[Response Times, Transaction Success]
+    G[Business] --&gt; H[KPIs, SLAs]
+
+    B --&gt; I[Alerting]
+    D --&gt; I
+    F --&gt; I
+    H --&gt; I
+    I --&gt; J[Incident Response]
+</code></pre>
+
+<h3 id="12-key-performance-indicators-kpis">1.2 Key Performance Indicators (KPIs)</h3>
+<ul>
+<li><strong>System Health</strong>: CPU, Memory, Disk, Network</li>
+<li><strong>Application Performance</strong>: Response Time, Error Rates</li>
+<li><strong>Service Availability</strong>: Uptime %, MTTR (Mean Time To Resolve)</li>
+<li><strong>Capacity Planning</strong>: Trend Analysis, Forecasting</li>
+</ul>
+<h2 id="2-monitoring-tools_1">2. Monitoring Tools</h2>
+<h3 id="21-core-monitoring-stack">2.1 Core Monitoring Stack</h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+<th>Key Features</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Zabbix</strong></td>
+<td>Infrastructure</td>
+<td>Server monitoring, Network monitoring</td>
+</tr>
+<tr>
+<td><strong>Prometheus</strong></td>
+<td>Metrics</td>
+<td>Time-series data, Alerting</td>
+</tr>
+<tr>
+<td><strong>Grafana</strong></td>
+<td>Visualization</td>
+<td>Dashboards, Analytics</td>
+</tr>
+<tr>
+<td><strong>ELK Stack</strong></td>
+<td>Logs</td>
+<td>Log analysis, Searching</td>
+</tr>
+<tr>
+<td><strong>Nagios</strong></td>
+<td>Service Monitoring</td>
+<td>Plugin architecture, Alerting</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-network-monitoring-commands">2.2 Network Monitoring Commands</h3>
+<pre class="codehilite"><code class="language-bash"># Basic Connectivity
+ping -c 4 example.com
+
+# Network Path
+traceroute example.com
+
+# Port Availability
+nc -zv example.com 80
+
+# Bandwidth Monitoring
+iftop -i eth0
+</code></pre>
+
+<h2 id="3-event-management_1">3. Event Management</h2>
+<h3 id="31-event-classification">3.1 Event Classification</h3>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Description</th>
+<th>Response Time</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Critical</strong></td>
+<td>Service Down</td>
+<td>15 min</td>
+<td>Server offline</td>
+</tr>
+<tr>
+<td><strong>High</strong></td>
+<td>Performance Degradation</td>
+<td>1 hour</td>
+<td>High CPU usage</td>
+</tr>
+<tr>
+<td><strong>Medium</strong></td>
+<td>Non-critical Failure</td>
+<td>4 hours</td>
+<td>Backup failed</td>
+</tr>
+<tr>
+<td><strong>Low</strong></td>
+<td>Informational</td>
+<td>24 hours</td>
+<td>Software update available</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-event-correlation-rules">3.2 Event Correlation Rules</h3>
+<pre class="codehilite"><code class="language-yaml"># Example correlation rule in Prometheus Alertmanager
+- alert: HighErrorRate
+  expr: rate(http_requests_total{status=~&quot;5..&quot;}[5m]) &gt; 0.1
+  for: 10m
+  labels:
+    severity: critical
+  annotations:
+    summary: &quot;High error rate on {{ $labels.instance }}&quot;
+    description: &quot;{{ $value }}% of requests are failing&quot;
+</code></pre>
+
+<h2 id="4-alerting-notification_1">4. Alerting &amp; Notification</h2>
+<h3 id="41-alert-routing">4.1 Alert Routing</h3>
+<pre class="codehilite"><code class="language-mermaid">graph LR
+    A[Alert] --&gt; B{Severity?}
+    B --&gt;|Critical| C[On-call Engineer]
+    B --&gt;|High| D[Support Team]
+    B --&gt;|Medium| E[Ticket System]
+    B --&gt;|Low| F[Dashboard]
+</code></pre>
+
+<h3 id="42-notification-channels">4.2 Notification Channels</h3>
+<ul>
+<li><strong>PagerDuty</strong>: Critical alerts</li>
+<li><strong>Email</strong>: Non-urgent notifications</li>
+<li><strong>Slack/Microsoft Teams</strong>: Team communications</li>
+<li><strong>SMS</strong>: After-hours critical alerts</li>
+</ul>
+<h2 id="5-system-health-checks_1">5. System Health Checks</h2>
+<h3 id="51-automated-health-check-script">5.1 Automated Health Check Script</h3>
+<pre class="codehilite"><code class="language-bash">#!/bin/bash
+# health_check.sh
+
+# Check CPU Load
+cpu_load=$(uptime | awk -F'[a-z]:' '{ print $2}' | awk -F', ' '{print $1}' | cut -d. -f1)
+if [ $cpu_load -gt 5 ]; then
+    echo &quot;CRITICAL: High CPU load: $cpu_load&quot;
+    exit 2
+fi
+
+# Check Memory Usage
+mem_usage=$(free | grep Mem | awk '{print $3/$2 * 100.0}' | cut -d. -f1)
+if [ $mem_usage -gt 90 ]; then
+    echo &quot;CRITICAL: High memory usage: $mem_usage%&quot;
+    exit 2
+fi
+
+# Check Disk Space
+disk_usage=$(df -h / | awk 'NR==2 {print $5}' | tr -d '%')
+if [ $disk_usage -gt 90 ]; then
+    echo &quot;CRITICAL: Disk space low: $disk_usage%&quot;
+    exit 2
+fi
+
+echo &quot;OK: System health normal&quot;
+exit 0
+</code></pre>
+
+<h2 id="6-log-management_1">6. Log Management</h2>
+<h3 id="61-key-log-files">6.1 Key Log Files</h3>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Log Location</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linux</td>
+<td>/var/log/syslog</td>
+<td>System logs</td>
+</tr>
+<tr>
+<td>Windows</td>
+<td>Event Viewer</td>
+<td>System events</td>
+</tr>
+<tr>
+<td>Apache</td>
+<td>/var/log/apache2/</td>
+<td>Web server logs</td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td>/var/log/mysql/</td>
+<td>Database logs</td>
+</tr>
+</tbody>
+</table>
+<h3 id="62-log-analysis-commands">6.2 Log Analysis Commands</h3>
+<pre class="codehilite"><code class="language-bash"># Find errors in logs
+grep -i &quot;error\|fail\|critical&quot; /var/log/syslog
+
+# Monitor log in real-time
+tail -f /var/log/nginx/access.log
+
+# Count occurrences of error
+cat /var/log/app.log | grep &quot;ERROR&quot; | wc -l
+</code></pre>
+
+<h2 id="7-incident-response_1">7. Incident Response</h2>
+<h3 id="71-incident-workflow">7.1 Incident Workflow</h3>
+<pre class="codehilite"><code class="language-mermaid">graph TD
+    A[Detection] --&gt; B[Classification]
+    B --&gt; C{Severity?}
+    C --&gt;|Critical| D[Trigger PagerDuty]
+    C --&gt;|High| E[Assign to Team]
+    C --&gt;|Medium| F[Queue for Review]
+    D --&gt; G[Investigation]
+    E --&gt; G
+    F --&gt; G
+    G --&gt; H[Resolution]
+    H --&gt; I[Documentation]
+    I --&gt; J[Post-Mortem]
+</code></pre>
+
+<h3 id="72-post-incident-report-template">7.2 Post-Incident Report Template</h3>
+<pre class="codehilite"><code class="language-markdown"># Post-Incident Review: [Incident ID]
+
+## Incident Details
+- **Start Time**: [Timestamp]
+- **Detection Time**: [Timestamp]
+- **Resolution Time**: [Timestamp]
+- **Duration**: [HH:MM]
+- **Impact**: [Affected Services/Users]
+
+## Timeline
+| Time | Event | Action Taken |
+|------|-------|--------------|
+| 00:00 | First alert received | Initial assessment |
+| 00:15 | Team notified | Investigation started |
+| 01:30 | Root cause identified | Mitigation in progress |
+
+## Root Cause
+[Detailed explanation of the cause]
+
+## Resolution
+[Steps taken to resolve]
+
+## Preventive Measures
+1. [Action Item 1]
+   - Owner: [Name]
+   - Due Date: [Date]
+2. [Action Item 2]
+   - Owner: [Name]
+   - Due Date: [Date]
+
+## Lessons Learned
+- What went well
+- What could be improved
+- Action items for process improvement
+</code></pre>
+
+<h2 id="8-performance-baselines">8. Performance Baselines</h2>
+<h3 id="81-establishing-baselines">8.1 Establishing Baselines</h3>
+<pre class="codehilite"><code class="language-bash"># CPU Baseline (Linux)
+sar -u 60 1440 -f /var/log/sa/sa$(date +%d -d &quot;yesterday&quot;) | grep -v &quot;^$&quot; | grep -v &quot;%&quot;
+
+# Memory Baseline (Linux)
+free -m
+
+# Disk I/O Baseline
+iostat -dx 5 12
+</code></pre>
+
+<h3 id="82-thresholds">8.2 Thresholds</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Warning</th>
+<th>Critical</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU Usage</td>
+<td>70%</td>
+<td>90%</td>
+</tr>
+<tr>
+<td>Memory Usage</td>
+<td>80%</td>
+<td>90%</td>
+</tr>
+<tr>
+<td>Disk Space</td>
+<td>85%</td>
+<td>95%</td>
+</tr>
+<tr>
+<td>Response Time</td>
+<td>&gt;1s</td>
+<td>&gt;5s</td>
+</tr>
+<tr>
+<td>Error Rate</td>
+<td>1%</td>
+<td>5%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="9-automation-scripting">9. Automation &amp; Scripting</h2>
+<h3 id="91-automated-response-script">9.1 Automated Response Script</h3>
+<pre class="codehilite"><code class="language-python">#!/usr/bin/env python3
+# auto_responder.py
+
+import requests
+import smtplib
+from datetime import datetime
+
+def check_service(url):
+    try:
+        response = requests.get(url, timeout=10)
+        return response.status_code == 200
+    except:
+        return False
+
+def send_alert(service, status):
+    subject = f&quot;ALERT: {service} is {status}&quot;
+    message = f&quot;Service {service} is {status} at {datetime.now()}&quot;
+
+    # Configure email settings
+    sender = 'monitoring@example.com'
+    receivers = ['team@example.com']
+
+    try:
+        smtpObj = smtplib.SMTP('smtp.example.com')
+        smtpObj.sendmail(sender, receivers, f&quot;Subject: {subject}\n\n{message}&quot;)
+        print(&quot;Alert sent successfully&quot;)
+    except Exception as e:
+        print(f&quot;Failed to send alert: {e}&quot;)
+
+# List of services to monitor
+services = {
+    'Web Server': 'https://example.com',
+    'API': 'https://api.example.com/health',
+    'Database': 'https://db.example.com/ping'
+}
+
+# Check each service
+for name, url in services.items():
+    if not check_service(url):
+        send_alert(name, &quot;DOWN&quot;)
+    else:
+        print(f&quot;{name} is UP&quot;)
+</code></pre>
+
+<h2 id="10-documentation-reporting_1">10. Documentation &amp; Reporting</h2>
+<h3 id="101-daily-check-template">10.1 Daily Check Template</h3>
+<pre class="codehilite"><code class="language-markdown"># Daily System Health Check - $(date +%Y-%m-%d)
+
+## System Status
+- [ ] All critical services running
+- [ ] Backup verification passed
+- [ ] No security alerts
+- [ ] Capacity within thresholds
+
+## Issues Found
+1. [Issue 1]
+   - Status: [Open/In Progress/Resolved]
+   - Assigned To: [Name]
+   - ETA: [Date]
+
+## Actions Taken
+- [Action 1]
+- [Action 2]
+
+## Pending Tasks
+- [ ] Task 1
+- [ ] Task 2
+</code></pre>
+
+<h3 id="102-weekly-report-metrics">10.2 Weekly Report Metrics</h3>
+<ul>
+<li>Uptime percentage</li>
+<li>Number of incidents</li>
+<li>Mean Time To Resolve (MTTR)</li>
+<li>Top recurring issues</li>
+<li>Capacity trends</li>
+</ul>
+<hr />
+<p><em>Document Version: 1.0<br />
+Last Updated: 2025-09-20</em></p>
+        </main>
+        <footer class="footer">
+            <p>Generated by Markdown to HTML Converter</p>
+        </footer>
+    </div>
+</body>
+</html>

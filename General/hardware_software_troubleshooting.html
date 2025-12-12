@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Markdown to HTML Converter">
+    <title>hardware_software_troubleshooting</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>hardware_software_troubleshooting</h1>
+            <div class="meta">
+                <span class="last-updated">Last updated: 2025-10-01 20:45:37</span>
+            </div>
+        </header>
+        <main class="content">
+            <h1 id="hardware-software-troubleshooting-guide">🖥️ Hardware &amp; Software Troubleshooting Guide</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<h3 id="1-quick-diagnostic-tools">1. Quick Diagnostic Tools</h3>
+<ul>
+<li>1.1 Built-in Windows Diagnostics</li>
+<li>1.2 macOS Diagnostics</li>
+</ul>
+<h3 id="2-common-hardware-issues">2. Common Hardware Issues</h3>
+<ul>
+<li>2.1 Computer Won&rsquo;t Start</li>
+<li>2.2 Overheating</li>
+<li>2.3 No Display</li>
+</ul>
+<h3 id="3-common-software-issues">3. Common Software Issues</h3>
+<ul>
+<li>3.1 Application Crashes</li>
+<li>3.2 Slow Performance</li>
+</ul>
+<h3 id="4-peripheral-problems">4. Peripheral Problems</h3>
+<ul>
+<li>4.1 Printer Issues</li>
+<li>4.2 External Devices Not Recognized</li>
+</ul>
+<h3 id="5-network-troubleshooting">5. Network Troubleshooting</h3>
+<ul>
+<li>5.1 Can&rsquo;t Connect to WiFi</li>
+</ul>
+<h3 id="6-common-error-messages">6. Common Error Messages</h3>
+<ul>
+<li>6.1 Windows Blue Screen (BSOD)</li>
+<li>6.2 macOS Kernel Panic</li>
+</ul>
+<h3 id="7-data-recovery">7. Data Recovery</h3>
+<ul>
+<li>7.1 Accidental Deletion</li>
+</ul>
+<h3 id="8-driver-management">8. Driver Management</h3>
+<ul>
+<li>8.1 Update Drivers</li>
+</ul>
+<h3 id="9-system-maintenance">9. System Maintenance</h3>
+<ul>
+<li>9.1 Windows</li>
+<li>9.2 macOS</li>
+</ul>
+<h3 id="10-hardware-testing-tools">10. Hardware Testing Tools</h3>
+<ul>
+<li>10.1 Recommended Software</li>
+</ul>
+<h3 id="11-quick-fixes-for-common-problems">11. Quick Fixes for Common Problems</h3>
+<ul>
+<li>11.1 Windows Updates Stuck</li>
+<li>11.2 Application Won&rsquo;t Open</li>
+<li>11.3 Sound Not Working</li>
+</ul>
+<h3 id="12-remote-troubleshooting">12. Remote Troubleshooting</h3>
+<ul>
+<li>12.1 Windows Remote Assistance</li>
+<li>12.2 macOS Screen Sharing</li>
+</ul>
+<h3 id="13-preventive-maintenance">13. Preventive Maintenance</h3>
+<ul>
+<li>13.1 Monthly Tasks</li>
+<li>13.2 Quarterly Tasks</li>
+</ul>
+<h3 id="14-common-hardware-fixes">14. Common Hardware Fixes</h3>
+<ul>
+<li>14.1 Laptop Battery Not Charging</li>
+<li>14.2 Noisy Hard Drive</li>
+</ul>
+<h3 id="15-software-repair-tools">15. Software Repair Tools</h3>
+<ul>
+<li>15.1 Windows</li>
+<li>15.2 macOS</li>
+</ul>
+<hr />
+<h1 id="hardware-software-troubleshooting-guide_1">🖥️ Hardware &amp; Software Troubleshooting Guide</h1>
+<h2 id="1-quick-diagnostic-tools_1">1. Quick Diagnostic Tools</h2>
+<h3 id="11-built-in-windows-diagnostics">1.1 Built-in Windows Diagnostics</h3>
+<pre class="codehilite"><code class="language-batch"># System File Checker
+sfc /scannow
+
+# DISM (Deployment Image Servicing and Management)
+dism /online /cleanup-image /restorehealth
+
+# Check Disk
+chkdsk C: /f /r
+
+# Memory Diagnostic
+mdsched.exe
+</code></pre>
+
+<h3 id="12-macos-diagnostics">1.2 macOS Diagnostics</h3>
+<pre class="codehilite"><code class="language-bash"># Disk Utility First Aid
+diskutil verifyVolume /
+
+# Check Disk Permissions
+diskutil resetUserPermissions / `id -u`
+
+# System Diagnostics
+sudo sysdiagnose
+</code></pre>
+
+<h2 id="2-common-hardware-issues_1">2. Common Hardware Issues</h2>
+<h3 id="21-computer-wont-start">2.1 Computer Won&rsquo;t Start</h3>
+<p><strong>Troubleshooting Steps</strong>:<br />
+1. Check power connections<br />
+2. Test power outlet<br />
+3. Remove peripherals<br />
+4. Listen for beep codes<br />
+5. Try safe mode</p>
+<h3 id="22-overheating">2.2 Overheating</h3>
+<p><strong>Symptoms</strong>:<br />
+- Random shutdowns<br />
+- Loud fan noise<br />
+- Slow performance</p>
+<p><strong>Solutions</strong>:<br />
+1. Clean vents and fans<br />
+2. Check thermal paste<br />
+3. Improve ventilation<br />
+4. Use cooling pad</p>
+<h3 id="23-no-display">2.3 No Display</h3>
+<p><strong>Troubleshooting Flow</strong>:</p>
+<pre class="codehilite"><code class="language-mermaid">graph TD
+    A[No Display?] --&gt; B{Power light on?}
+    B --&gt;|No| C[Check power supply]
+    B --&gt;|Yes| D[Check monitor]
+    D --&gt; E[Test with different cable]
+    E --&gt; F[Try different port]
+    F --&gt; G[Test with different monitor]
+</code></pre>
+
+<h2 id="3-common-software-issues_1">3. Common Software Issues</h2>
+<h3 id="31-application-crashes">3.1 Application Crashes</h3>
+<p><strong>Troubleshooting Steps</strong>:<br />
+1. Restart application<br />
+2. Update to latest version<br />
+3. Clear cache/temp files<br />
+4. Reinstall application</p>
+<h3 id="32-slow-performance">3.2 Slow Performance</h3>
+<p><strong>Quick Fixes</strong>:<br />
+1. Check Task Manager (Ctrl+Shift+Esc)<br />
+2. Disable startup programs<br />
+3. Run disk cleanup<br />
+4. Check for malware</p>
+<h2 id="4-peripheral-problems_1">4. Peripheral Problems</h2>
+<h3 id="41-printer-issues">4.1 Printer Issues</h3>
+<p><strong>Checklist</strong>:<br />
+- [ ] Printer powered on<br />
+- [ ] Paper loaded<br />
+- [ ] No paper jams<br />
+- [ ] Correct driver installed<br />
+- [ ] Default printer set</p>
+<h3 id="42-external-devices-not-recognized">4.2 External Devices Not Recognized</h3>
+<p><strong>Troubleshooting</strong>:<br />
+1. Try different USB port<br />
+2. Test on another computer<br />
+3. Update drivers<br />
+4. Check Device Manager for errors</p>
+<h2 id="5-network-troubleshooting_1">5. Network Troubleshooting</h2>
+<h3 id="51-cant-connect-to-wifi">5.1 Can&rsquo;t Connect to WiFi</h3>
+<p><strong>Windows</strong>:<br />
+1. Run Network Troubleshooter<br />
+2. Reset network stack:<br />
+<code>netsh winsock reset
+   netsh int ip reset</code><br />
+3. Update WiFi drivers</p>
+<p><strong>macOS</strong>:<br />
+1. Delete WiFi preference file<br />
+2. Create new network location<br />
+3. Reset PRAM/NVRAM</p>
+<h2 id="6-common-error-messages_1">6. Common Error Messages</h2>
+<h3 id="61-windows-blue-screen-bsod">6.1 Windows Blue Screen (BSOD)</h3>
+<p><strong>Common Causes</strong>:<br />
+- Driver conflicts<br />
+- Hardware failure<br />
+- Memory issues<br />
+- Overheating</p>
+<p><strong>Action</strong>:<br />
+1. Note error code<br />
+2. Check Event Viewer<br />
+3. Run memory diagnostics<br />
+4. Update drivers</p>
+<h3 id="62-macos-kernel-panic">6.2 macOS Kernel Panic</h3>
+<p><strong>Troubleshooting</strong>:<br />
+1. Note error message<br />
+2. Boot in Safe Mode (Shift on startup)<br />
+3. Check Console logs<br />
+4. Reset NVRAM/PRAM</p>
+<h2 id="7-data-recovery_1">7. Data Recovery</h2>
+<h3 id="71-accidental-deletion">7.1 Accidental Deletion</h3>
+<p><strong>Windows</strong>:<br />
+1. Check Recycle Bin<br />
+2. Use File History<br />
+3. Try <code>recuva</code> (free tool)</p>
+<p><strong>macOS</strong>:<br />
+1. Check Trash<br />
+2. Use Time Machine<br />
+3. Try <code>testdisk</code> (command line)</p>
+<h2 id="8-driver-management_1">8. Driver Management</h2>
+<h3 id="81-update-drivers">8.1 Update Drivers</h3>
+<p><strong>Windows</strong>:<br />
+1. Device Manager &gt; Right-click device &gt; Update driver<br />
+2. Manufacturer&rsquo;s website</p>
+<p><strong>macOS</strong>:<br />
+1. App Store &gt; Updates<br />
+2. Manufacturer&rsquo;s website</p>
+<h2 id="9-system-maintenance_1">9. System Maintenance</h2>
+<h3 id="91-windows">9.1 Windows</h3>
+<pre class="codehilite"><code class="language-batch"># Clear temp files
+cleanmgr
+
+# Defragment disk
+defrag C: /U /V
+
+# Check startup impact
+taskmgr &gt; Startup
+</code></pre>
+
+<h3 id="92-macos">9.2 macOS</h3>
+<pre class="codehilite"><code class="language-bash"># Clear system cache
+sudo rm -rf /Library/Caches/*
+
+# Clear user cache
+rm -rf ~/Library/Caches/*
+
+# Verify disk
+sudo fsck -fy
+</code></pre>
+
+<h2 id="10-hardware-testing-tools_1">10. Hardware Testing Tools</h2>
+<h3 id="101-recommended-software">10.1 Recommended Software</h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+<th>Platform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MemTest86</td>
+<td>Memory testing</td>
+<td>Bootable USB</td>
+</tr>
+<tr>
+<td>CrystalDiskInfo</td>
+<td>HDD/SSD health</td>
+<td>Windows</td>
+</tr>
+<tr>
+<td>HWMonitor</td>
+<td>Temperature monitoring</td>
+<td>Windows/macOS</td>
+</tr>
+<tr>
+<td>Apple Diagnostics</td>
+<td>Hardware test</td>
+<td>Mac</td>
+</tr>
+</tbody>
+</table>
+<h2 id="11-quick-fixes-for-common-problems_1">11. Quick Fixes for Common Problems</h2>
+<h3 id="111-windows-updates-stuck">11.1 Windows Updates Stuck</h3>
+<ol>
+<li>Stop Windows Update service</li>
+<li>Delete <code>C:\Windows\SoftwareDistribution</code></li>
+<li>Restart service</li>
+</ol>
+<h3 id="112-application-wont-open">11.2 Application Won&rsquo;t Open</h3>
+<ol>
+<li>Right-click &gt; Run as Administrator</li>
+<li>Check compatibility mode</li>
+<li>Reinstall redistributables</li>
+</ol>
+<h3 id="113-sound-not-working">11.3 Sound Not Working</h3>
+<ol>
+<li>Check volume/mute</li>
+<li>Verify output device</li>
+<li>Update audio drivers</li>
+<li>Test with headphones</li>
+</ol>
+<h2 id="12-remote-troubleshooting_1">12. Remote Troubleshooting</h2>
+<h3 id="121-windows-remote-assistance">12.1 Windows Remote Assistance</h3>
+<ol>
+<li>Type &ldquo;Quick Assist&rdquo; in Start</li>
+<li>Choose &ldquo;Give assistance&rdquo;</li>
+<li>Share security code</li>
+</ol>
+<h3 id="122-macos-screen-sharing">12.2 macOS Screen Sharing</h3>
+<ol>
+<li>System Preferences &gt; Sharing</li>
+<li>Enable Screen Sharing</li>
+<li>Connect via VNC</li>
+</ol>
+<h2 id="13-preventive-maintenance_1">13. Preventive Maintenance</h2>
+<h3 id="131-monthly-tasks">13.1 Monthly Tasks</h3>
+<ul>
+<li>Update operating system</li>
+<li>Update antivirus definitions</li>
+<li>Backup important data</li>
+<li>Clean dust from hardware</li>
+</ul>
+<h3 id="132-quarterly-tasks">13.2 Quarterly Tasks</h3>
+<ul>
+<li>Check drive health</li>
+<li>Test backup restoration</li>
+<li>Review installed software</li>
+<li>Clean up temporary files</li>
+</ul>
+<h2 id="14-common-hardware-fixes_1">14. Common Hardware Fixes</h2>
+<h3 id="141-laptop-battery-not-charging">14.1 Laptop Battery Not Charging</h3>
+<ol>
+<li>Check power adapter</li>
+<li>Remove battery (if possible)</li>
+<li>Reset power management</li>
+<li>Update BIOS/UEFI</li>
+</ol>
+<h3 id="142-noisy-hard-drive">14.2 Noisy Hard Drive</h3>
+<ol>
+<li>Backup data immediately</li>
+<li>Run S.M.A.R.T. test</li>
+<li>Replace if failing</li>
+</ol>
+<h2 id="15-software-repair-tools_1">15. Software Repair Tools</h2>
+<h3 id="151-windows">15.1 Windows</h3>
+<ul>
+<li><code>DISM</code> - Repair Windows image</li>
+<li><code>SFC</code> - System File Checker</li>
+<li><code>CHKDSK</code> - Disk error checking</li>
+<li><code>Windows Recovery Environment</code> - Advanced repair</li>
+</ul>
+<h3 id="152-macos">15.2 macOS</h3>
+<ul>
+<li><code>Disk Utility</code> - First Aid</li>
+<li><code>Safe Mode</code> - Isolate issues</li>
+<li><code>Recovery Mode</code> - Reinstall OS</li>
+<li><code>Single User Mode</code> - Advanced repair</li>
+</ul>
+<hr />
+<p><em>Document Version: 1.0<br />
+Last Updated: 2025-09-20</em></p>
+        </main>
+        <footer class="footer">
+            <p>Generated by Markdown to HTML Converter</p>
+        </footer>
+    </div>
+</body>
+</html>

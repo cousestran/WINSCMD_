@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Markdown to HTML Converter">
+    <title>deployment_maintenance_guide</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>deployment_maintenance_guide</h1>
+            <div class="meta">
+                <span class="last-updated">Last updated: 2025-09-30 22:14:58</span>
+            </div>
+        </header>
+        <main class="content">
+            <h1 id="hardware-software-deployment-guide">🚀 Hardware &amp; Software Deployment Guide</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<h3 id="1-standard-operating-procedures-sop">1. Standard Operating Procedures (SOP)</h3>
+<ul>
+<li>1.1 Deployment Workflow</li>
+<li>1.2 Change Management Process</li>
+<li>1.2.1 Request Submission</li>
+<li>1.2.2 Review &amp; Approval</li>
+<li>1.2.3 Implementation</li>
+<li>1.2.4 Post-Implementation</li>
+</ul>
+<h3 id="2-hardware-deployment">2. Hardware Deployment</h3>
+<ul>
+<li>2.1 New Workstation Setup</li>
+<li>2.2 Hardware Standards</li>
+</ul>
+<h3 id="3-software-deployment">3. Software Deployment</h3>
+<ul>
+<li>3.1 Standard Software Stack</li>
+<li>3.2 Deployment Tools</li>
+</ul>
+<h3 id="4-maintenance-procedures">4. Maintenance Procedures</h3>
+<ul>
+<li>4.1 Patch Management</li>
+<li>4.2 Automated Maintenance Scripts</li>
+</ul>
+<h3 id="5-documentation-requirements">5. Documentation Requirements</h3>
+<ul>
+<li>5.1 Deployment Documentation</li>
+</ul>
+<h3 id="6-quality-assurance">6. Quality Assurance</h3>
+<ul>
+<li>6.1 Post-Deployment Checklist</li>
+<li>6.2 Validation Tests</li>
+</ul>
+<h3 id="7-security-compliance">7. Security Compliance</h3>
+<ul>
+<li>7.1 Hardening Standards</li>
+<li>7.2 Compliance Checks</li>
+</ul>
+<h3 id="8-software-packaging">8. Software Packaging</h3>
+<ul>
+<li>8.1 Package Creation</li>
+<li>8.2 Example Package (PowerShell)</li>
+</ul>
+<h3 id="9-remote-management">9. Remote Management</h3>
+<ul>
+<li>9.1 Tools &amp; Methods</li>
+</ul>
+<hr />
+<h1 id="hardware-software-deployment-guide_1">🚀 Hardware &amp; Software Deployment Guide</h1>
+<h2 id="1-standard-operating-procedures-sop_1">1. Standard Operating Procedures (SOP)</h2>
+<h3 id="11-deployment-workflow">1.1 Deployment Workflow</h3>
+<pre class="codehilite"><code class="language-mermaid">graph TD
+    A[Request Received] --&gt; B[Requirements Analysis]
+    B --&gt; C[Approval]
+    C --&gt; D[Procurement]
+    D --&gt; E[Pre-deployment Testing]
+    E --&gt; F[Deployment]
+    F --&gt; G[Verification]
+    G --&gt; H[Documentation]
+    H --&gt; I[Closure]
+</code></pre>
+
+<h3 id="12-change-management-process">1.2 Change Management Process</h3>
+<ol>
+<li>
+<p><strong>Request Submission</strong><br />
+   - Complete change request form<br />
+   - Attach impact analysis<br />
+   - Submit to CAB (Change Advisory Board)</p>
+</li>
+<li>
+<p><strong>Review &amp; Approval</strong><br />
+   - Risk assessment<br />
+   - Backout plan review<br />
+   - Schedule approval</p>
+</li>
+<li>
+<p><strong>Implementation</strong><br />
+   - Pre-implementation testing<br />
+   - Execute change during maintenance window<br />
+   - Verify functionality</p>
+</li>
+<li>
+<p><strong>Post-Implementation</strong><br />
+   - Documentation update<br />
+   - User notification<br />
+   - Review meeting</p>
+</li>
+</ol>
+<h2 id="2-hardware-deployment_1">2. Hardware Deployment</h2>
+<h3 id="21-new-workstation-setup">2.1 New Workstation Setup</h3>
+<p><strong>Checklist</strong>:<br />
+- [ ] Unbox and inventory<br />
+- [ ] Apply asset tag<br />
+- [ ] Update BIOS/firmware<br />
+- [ ] Install base OS image<br />
+- [ ] Join to domain<br />
+- [ ] Install standard software<br />
+- [ ] Configure user profile<br />
+- [ ] Verify network connectivity<br />
+- [ ] Test all peripherals<br />
+- [ ] Document configuration</p>
+<h3 id="22-hardware-standards">2.2 Hardware Standards</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Standard</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Laptop</td>
+<td>Dell Latitude 54XX</td>
+<td>16GB RAM, 512GB SSD</td>
+</tr>
+<tr>
+<td>Desktop</td>
+<td>HP EliteDesk 800</td>
+<td>32GB RAM, 1TB NVMe</td>
+</tr>
+<tr>
+<td>Monitor</td>
+<td>24&rdquo; 1080p</td>
+<td>Dual monitor standard</td>
+</tr>
+<tr>
+<td>Docking Station</td>
+<td>Dell WD19</td>
+<td>For laptop users</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-software-deployment_1">3. Software Deployment</h2>
+<h3 id="31-standard-software-stack">3.1 Standard Software Stack</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Software</th>
+<th>Version</th>
+<th>Deployment Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OS</td>
+<td>Windows 10/11</td>
+<td>22H2</td>
+<td>WDS/MDT</td>
+</tr>
+<tr>
+<td>Office</td>
+<td>Microsoft 365</td>
+<td>Current</td>
+<td>Intune</td>
+</tr>
+<tr>
+<td>Browser</td>
+<td>Chrome/Edge</td>
+<td>Latest</td>
+<td>WSUS</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>CrowdStrike</td>
+<td>7.x</td>
+<td>SCCM</td>
+</tr>
+<tr>
+<td>VPN</td>
+<td>GlobalProtect</td>
+<td>6.x</td>
+<td>Manual</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-deployment-tools">3.2 Deployment Tools</h3>
+<ul>
+<li><strong>Windows</strong>: Microsoft Endpoint Manager (Intune + SCCM)</li>
+<li><strong>macOS</strong>: Jamf Pro</li>
+<li><strong>Linux</strong>: Ansible/Puppet</li>
+<li><strong>Mobile</strong>: Microsoft Intune</li>
+</ul>
+<h2 id="4-maintenance-procedures_1">4. Maintenance Procedures</h2>
+<h3 id="41-patch-management">4.1 Patch Management</h3>
+<p><strong>Monthly Cycle</strong>:<br />
+1. <strong>Week 1</strong>: Test patches in DEV<br />
+2. <strong>Week 2</strong>: Deploy to TEST<br />
+3. <strong>Week 3</strong>: Deploy to PILOT (10% prod)<br />
+4. <strong>Week 4</strong>: Full production deployment</p>
+<h3 id="42-automated-maintenance-scripts">4.2 Automated Maintenance Scripts</h3>
+<pre class="codehilite"><code class="language-powershell"># Windows Update Automation
+Install-Module PSWindowsUpdate -Force
+Get-WindowsUpdate -Install -AcceptAll -AutoReboot
+
+# Disk Cleanup
+cleanmgr /sagerun:1
+
+# System Health Check
+Get-PhysicalDisk | Select-Object FriendlyName, HealthStatus
+</code></pre>
+
+<h2 id="5-documentation-requirements_1">5. Documentation Requirements</h2>
+<h3 id="51-deployment-documentation">5.1 Deployment Documentation</h3>
+<pre class="codehilite"><code class="language-markdown">## Deployment Record: [Asset ID]
+
+### Hardware Details
+- **Model**: [Make/Model]
+- **Serial #**: [Number]
+- **Asset Tag**: [TAG-XXX]
+- **Purchase Date**: [YYYY-MM-DD]
+- **Warranty**: [End Date]
+
+### Software Configuration
+- **OS**: [Version]
+- **Key Software**:
+  - [Software] v[Version]
+  - [Software] v[Version]
+
+### Network Configuration
+- **Hostname**: [COMPUTER-NAME]
+- **IP Address**: [Static/DHCP]
+- **VLAN**: [Number]
+- **MAC Address**: [XX:XX:XX:XX:XX:XX]
+
+### User Assignment
+- **Assigned To**: [Name]
+- **Department**: [Dept]
+- **Date Deployed**: [YYYY-MM-DD]
+- **Deployed By**: [Technician]
+</code></pre>
+
+<h2 id="6-quality-assurance_1">6. Quality Assurance</h2>
+<h3 id="61-post-deployment-checklist">6.1 Post-Deployment Checklist</h3>
+<ul>
+<li>[ ] All applications launch</li>
+<li>[ ] Network drives mapped</li>
+<li>[ ] Printers installed</li>
+<li>[ ] Security policies applied</li>
+<li>[ ] Backup configured</li>
+<li>[ ] User training completed</li>
+</ul>
+<h3 id="62-validation-tests">6.2 Validation Tests</h3>
+<ol>
+<li>
+<p><strong>Basic Functionality</strong><br />
+   - Login/logout<br />
+   - Internet access<br />
+   - Network shares<br />
+   - Printing</p>
+</li>
+<li>
+<p><strong>Application Testing</strong><br />
+   - Launch all standard apps<br />
+   - Verify licensing<br />
+   - Test file associations</p>
+</li>
+</ol>
+<h2 id="7-security-compliance_1">7. Security Compliance</h2>
+<h3 id="71-hardening-standards">7.1 Hardening Standards</h3>
+<ul>
+<li><strong>Windows</strong>:</li>
+<li>BitLocker encryption</li>
+<li>Windows Defender ATP</li>
+<li>Local admin rights removed</li>
+<li>
+<p>Auto-lock enabled (5 min)</p>
+</li>
+<li>
+<p><strong>macOS</strong>:</p>
+</li>
+<li>FileVault enabled</li>
+<li>Gatekeeper configured</li>
+<li>Automatic updates enabled</li>
+</ul>
+<h3 id="72-compliance-checks">7.2 Compliance Checks</h3>
+<pre class="codehilite"><code class="language-powershell"># Verify BitLocker status
+Manage-bde -status C:
+
+# Check Windows Defender
+Get-MpComputerStatus | Select-Object RealTimeProtectionEnabled
+
+# Verify Firewall
+Get-NetFirewallProfile | Select-Object Name,Enabled
+</code></pre>
+
+<h2 id="8-software-packaging_1">8. Software Packaging</h2>
+<h3 id="81-package-creation">8.1 Package Creation</h3>
+<p><strong>Tools</strong>:<br />
+- Microsoft MSIX Packaging Tool<br />
+- AdminStudio<br />
+- PACE Suite</p>
+<p><strong>Requirements</strong>:<br />
+- Silent installation<br />
+- Proper detection method<br />
+- Rollback capability<br />
+- Logging enabled</p>
+<h3 id="82-example-package-powershell">8.2 Example Package (PowerShell)</h3>
+<pre class="codehilite"><code class="language-powershell"># Package.ps1
+$installer = &quot;setup.msi&quot;
+$logFile = &quot;$env:TEMP\install.log&quot;
+
+# Install with logging
+Start-Process msiexec.exe -Wait -ArgumentList &quot;/i `&quot;$installer`&quot; /qn /l*v `&quot;$logFile`&quot;&quot;
+
+# Verify installation
+if (Test-Path &quot;C:\Program Files\AppName&quot;) {
+    Write-Host &quot;Installation successful&quot;
+    exit 0
+} else {
+    Write-Host &quot;Installation failed&quot;
+    exit 1
+}
+</code></pre>
+
+<h2 id="9-remote-deployment">9. Remote Deployment</h2>
+<h3 id="91-tools-methods">9.1 Tools &amp; Methods</h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+<th>Command Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PDQ Deploy</td>
+<td>Software deployment</td>
+<td><code>pdqdeploy.exe -Deploy "Package" -Targets @("PC1","PC2")</code></td>
+</tr>
+<tr>
+<td>PSExec</td>
+<td>Remote command execution</td>
+<td><code>psexec \\computer cmd /c "command"</code></td>
+</tr>
+<tr>
+<td>Microsoft Intune</td>
+<td>Cloud-based management</td>
+<td><a href="https://intune.microsoft.com">Azure Portal</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="92-remote-troubleshooting">9.2 Remote Troubleshooting</h3>
+<ol>
+<li><strong>Connect</strong>:<br />
+<code>mstsc /v:computer /admin</code></li>
+<li><strong>Gather Info</strong>:<br />
+<code>systeminfo &gt; system.txt
+   ipconfig /all &gt; network.txt</code></li>
+<li><strong>Resolve</strong>:<br />
+   - Check event logs<br />
+   - Verify services<br />
+   - Test connectivity</li>
+</ol>
+<h2 id="10-decommissioning">10. Decommissioning</h2>
+<h3 id="101-hardware-retirement">10.1 Hardware Retirement</h3>
+<ol>
+<li>
+<p><strong>Data Sanitization</strong><br />
+   - Use DBAN for HDDs<br />
+   - Physical destruction for SSDs<br />
+   - Certificate of destruction</p>
+</li>
+<li>
+<p><strong>Asset Update</strong><br />
+   - Update inventory<br />
+   - Remove from monitoring<br />
+   - Archive documentation</p>
+</li>
+</ol>
+<h3 id="102-software-decommissioning">10.2 Software Decommissioning</h3>
+<ul>
+<li>Revoke licenses</li>
+<li>Remove from deployment systems</li>
+<li>Update documentation</li>
+<li>Notify stakeholders</li>
+</ul>
+<h2 id="11-automation-scripts">11. Automation Scripts</h2>
+<h3 id="111-windows-deployment">11.1 Windows Deployment</h3>
+<pre class="codehilite"><code class="language-powershell"># Deploy-Software.ps1
+param(
+    [Parameter(Mandatory=$true)]
+    [string]$ComputerName,
+    [string]$SoftwareName
+)
+
+$session = New-PSSession -ComputerName $ComputerName
+
+switch ($SoftwareName) {
+    &quot;Chrome&quot; {
+        Invoke-Command -Session $session -ScriptBlock {
+            $url = &quot;https://dl.google.com/chrome/install/latest/chrome_installer.exe&quot;
+            $output = &quot;$env:TEMP\chrome_installer.exe&quot;
+            Invoke-WebRequest -Uri $url -OutFile $output
+            Start-Process -FilePath $output -Args &quot;/silent /install&quot; -Wait
+        }
+    }
+    # Add more applications as needed
+}
+
+Remove-PSSession $session
+</code></pre>
+
+<h3 id="112-macos-deployment">11.2 macOS Deployment</h3>
+<pre class="codehilite"><code class="language-bash">#!/bin/bash
+# install_software.sh
+
+software=$1
+
+case $software in
+    &quot;chrome&quot;)
+        # Download and install Chrome
+        curl -L -o /tmp/googlechrome.dmg https://dl.google.com/chrome/mac/universal/stable/GGRO/googlechrome.dmg
+        hdiutil attach /tmp/googlechrome.dmg
+        sudo cp -r &quot;/Volumes/Google Chrome/Google Chrome.app&quot; &quot;/Applications/&quot;
+        hdiutil detach &quot;/Volumes/Google Chrome&quot;
+        ;;
+    *)
+        echo &quot;Unknown software: $software&quot;
+        exit 1
+        ;;
+esac
+</code></pre>
+
+<h2 id="12-monitoring-reporting">12. Monitoring &amp; Reporting</h2>
+<h3 id="121-key-metrics">12.1 Key Metrics</h3>
+<ul>
+<li>Deployment success rate</li>
+<li>Time to deploy</li>
+<li>Number of rollbacks</li>
+<li>User-reported issues</li>
+<li>System performance impact</li>
+</ul>
+<h3 id="122-reporting-tools">12.2 Reporting Tools</h3>
+<ul>
+<li>Microsoft Power BI</li>
+<li>Grafana dashboards</li>
+<li>Custom PowerShell scripts</li>
+<li>SQL queries against deployment database</li>
+</ul>
+<hr />
+<p><em>Document Version: 1.0<br />
+Last Updated: 2025-09-20</em></p>
+        </main>
+        <footer class="footer">
+            <p>Generated by Markdown to HTML Converter</p>
+        </footer>
+    </div>
+</body>
+</html>

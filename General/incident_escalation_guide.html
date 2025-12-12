@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Markdown to HTML Converter">
+    <title>incident_escalation_guide</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>incident_escalation_guide</h1>
+            <div class="meta">
+                <span class="last-updated">Last updated: 2025-10-01 20:46:42</span>
+            </div>
+        </header>
+        <main class="content">
+            <h1 id="incident-escalation-guide">🚨 Incident Escalation Guide</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#1-escalation-matrix">1. Escalation Matrix</a></li>
+<li><a href="#technical-escalation-path">Technical Escalation Path</a></li>
+<li><a href="#management-escalation-path">Management Escalation Path</a></li>
+<li><a href="#2-escalation-criteria">2. Escalation Criteria</a></li>
+<li><a href="#technical-triggers">Technical Triggers</a></li>
+<li><a href="#3-escalation-templates">3. Escalation Templates</a></li>
+<li><a href="#internal-escalation-email">Internal Escalation Email</a></li>
+<li><a href="#vendor-escalation-template">Vendor Escalation Template</a></li>
+</ul>
+<h2 id="1-escalation-matrix">1. Escalation Matrix</h2>
+<h3 id="technical-escalation-path">Technical Escalation Path</h3>
+<pre class="codehilite"><code class="language-mermaid">graph TD
+    A[L1: Help Desk] --&gt;|Not Resolved in 30min| B[L2: System Admin]
+    B --&gt;|Not Resolved in 1h| C[L3: Specialists]
+    C --&gt;|Vendor Support| D[Vendor TAC]
+</code></pre>
+
+<h3 id="management-escalation-path">Management Escalation Path</h3>
+<pre class="codehilite"><code class="language-mermaid">graph TD
+    A[Team Lead] --&gt;|Critical Issue| B[IT Manager]
+    B --&gt;|Major Outage| C[Director of IT]
+    C --&gt;|Business Impact| D[CIO/CTO]
+</code></pre>
+
+<h2 id="2-escalation-criteria">2. Escalation Criteria</h2>
+<h3 id="technical-triggers">Technical Triggers</h3>
+<ul>
+<li><strong>Immediate Escalation (P1)</strong></li>
+<li>Complete system outage</li>
+<li>Security breach</li>
+<li>
+<p>Data loss/corruption</p>
+</li>
+<li>
+<p><strong>1-Hour Escalation (P2)</strong></p>
+</li>
+<li>Major functionality down</li>
+<li>Multiple users affected</li>
+<li>
+<p>Work stoppage</p>
+</li>
+<li>
+<p><strong>4-Hour Escalation (P3/P4)</strong></p>
+</li>
+<li>Minor issues with workarounds</li>
+<li>Single user affected</li>
+<li>Non-critical systems</li>
+</ul>
+<h2 id="3-escalation-templates">3. Escalation Templates</h2>
+<h3 id="internal-escalation-email">Internal Escalation Email</h3>
+<pre class="codehilite"><code class="language-markdown">Subject: ⚠️ ESCALATED: [PRIORITY] [INC-XXX] - [Brief Description]
+
+Team,
+
+Escalating the following incident for immediate attention:
+
+**Incident**: [INC-XXX]  
+**Priority**: [P1/P2/P3]  
+**Reported By**: [Name]  
+**Current Status**: [Status]  
+**Business Impact**:  
+- [ ] Revenue Impact: $[Amount]/hour  
+- [ ] Users Affected: [Number]  
+- [ ] Systems Down: [List]  
+
+**Actions Taken**:
+1. [Troubleshooting Step 1]
+2. [Troubleshooting Step 2]
+
+**Requested Action**:
+- [ ] Immediate resolution required
+- [ ] Additional resources needed
+- [ ] Management decision required
+
+**Next Update**: [Time/Date]
+
+Attachments: [Screenshots/Logs]
+</code></pre>
+
+<h3 id="vendor-escalation-template">Vendor Escalation Template</h3>
+<pre class="codehilite"><code class="language-markdown">## Vendor Escalation Request
+
+**Case ID**: [Vendor Ticket #]  
+**Priority**: [1-Critical/2-High/3-Medium]  
+**Customer Impact**: [Description]  
+
+### Issue Details
+- **First Occurrence**: [Date/Time]  
+- **Frequency**: [Constant/Intermittent]  
+- **Error Messages**: [List]  
+
+### Environment
+- **Product Version**: [Version]  
+- **OS/Platform**: [Details]  
+- **Configuration**: [Relevant Settings]  
+
+### Troubleshooting Performed
+1. [Step 1] - [Result]
+2. [Step 2] - [Result]
+
+### Required Information
+- [ ] Log files attached
+- [ ] Screenshots provided
+- [ ] Network traces included
+
+### Business Justification
+[Explain criticality and impact]
+</code></pre>
+
+<h2 id="4-contact-directory">4. Contact Directory</h2>
+<h3 id="internal-teams">Internal Teams</h3>
+<table>
+<thead>
+<tr>
+<th>Team</th>
+<th>Contact</th>
+<th>Hours</th>
+<th>Escalation Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Network Ops</td>
+<td>netops@example.com</td>
+<td>24/7</td>
+<td>On-call rotation</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>soc@example.com</td>
+<td>24/7</td>
+<td>PagerDuty #123</td>
+</tr>
+<tr>
+<td>Database</td>
+<td>dba@example.com</td>
+<td>7x24</td>
+<td>Team rotation</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vendor-support">Vendor Support</h3>
+<table>
+<thead>
+<tr>
+<th>Vendor</th>
+<th>Product</th>
+<th>Support #</th>
+<th>Case Portal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cisco</td>
+<td>Network</td>
+<td>1-800-XXX</td>
+<td>[URL]</td>
+</tr>
+<tr>
+<td>Microsoft</td>
+<td>Windows</td>
+<td>1-800-XXX</td>
+<td>[URL]</td>
+</tr>
+<tr>
+<td>VMware</td>
+<td>vSphere</td>
+<td>1-800-XXX</td>
+<td>[URL]</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-escalation-workflow">5. Escalation Workflow</h2>
+<h3 id="step-1-initial-assessment">Step 1: Initial Assessment</h3>
+<ul>
+<li>[ ] Verify issue details</li>
+<li>[ ] Check known errors</li>
+<li>[ ] Attempt basic resolution</li>
+</ul>
+<h3 id="step-2-technical-escalation">Step 2: Technical Escalation</h3>
+<ul>
+<li>[ ] Gather relevant logs</li>
+<li>[ ] Document troubleshooting</li>
+<li>[ ] Contact support team</li>
+</ul>
+<h3 id="step-3-management-escalation">Step 3: Management Escalation</h3>
+<ul>
+<li>[ ] Notify team lead</li>
+<li>[ ] Update stakeholders</li>
+<li>[ ] Initiate bridge line if needed</li>
+</ul>
+<h3 id="step-4-vendor-escalation">Step 4: Vendor Escalation</h3>
+<ul>
+<li>[ ] Open support case</li>
+<li>[ ] Provide all details</li>
+<li>[ ] Set severity level</li>
+</ul>
+<h2 id="6-escalation-sla">6. Escalation SLA</h2>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Response Time</th>
+<th>Resolution Time</th>
+<th>Notification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Critical</td>
+<td>15 min</td>
+<td>2 hours</td>
+<td>SMS, Email, Call</td>
+</tr>
+<tr>
+<td>High</td>
+<td>1 hour</td>
+<td>4 hours</td>
+<td>Email, Call</td>
+</tr>
+<tr>
+<td>Medium</td>
+<td>4 hours</td>
+<td>1 business day</td>
+<td>Email</td>
+</tr>
+<tr>
+<td>Low</td>
+<td>8 hours</td>
+<td>3 business days</td>
+<td>Email</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-post-escalation-process">7. Post-Escalation Process</h2>
+<h3 id="resolution-documentation">Resolution Documentation</h3>
+<pre class="codehilite"><code class="language-markdown">## Resolution Summary - [INC-XXX]
+
+### Root Cause
+[Detailed explanation]
+
+### Resolution Steps
+1. [Action 1]
+2. [Action 2]
+
+### Preventative Measures
+- [ ] Update documentation
+- [ ] Schedule training
+- [ ] Implement monitoring
+
+### Follow-up Actions
+| Task | Owner | Due Date | Status |
+|------|-------|----------|--------|
+| [ ]  |       |          |        |
+</code></pre>
+
+<h2 id="8-escalation-best-practices">8. Escalation Best Practices</h2>
+<h3 id="dos">Do&rsquo;s</h3>
+<ul>
+<li>Verify all information before escalating</li>
+<li>Include complete error messages</li>
+<li>Attach relevant logs/screenshots</li>
+<li>Set clear expectations</li>
+<li>Follow up regularly</li>
+</ul>
+<h3 id="donts">Don&rsquo;ts</h3>
+<ul>
+<li>Don&rsquo;t skip support levels</li>
+<li>Avoid vague descriptions</li>
+<li>Don&rsquo;t forget to document</li>
+<li>Never ignore SLAs</li>
+</ul>
+<h2 id="9-emergency-contacts">9. Emergency Contacts</h2>
+<h3 id="after-hours-support">After-Hours Support</h3>
+<ul>
+<li><strong>Primary</strong>: [Name] - [Phone]</li>
+<li><strong>Secondary</strong>: [Name] - [Phone]</li>
+<li><strong>Management</strong>: [Name] - [Phone]</li>
+</ul>
+<h3 id="holiday-coverage">Holiday Coverage</h3>
+<ul>
+<li><strong>Dec 25-Jan 1</strong>: [Schedule]</li>
+<li><strong>Summer Rotation</strong>: [Schedule]</li>
+</ul>
+<hr />
+<p><em>Document Version: 1.0<br />
+Last Updated: 2025-09-20</em></p>
+        </main>
+        <footer class="footer">
+            <p>Generated by Markdown to HTML Converter</p>
+        </footer>
+    </div>
+</body>
+</html>

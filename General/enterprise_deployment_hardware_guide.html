@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Markdown to HTML Converter">
+    <title>enterprise_deployment_hardware_guide</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>enterprise_deployment_hardware_guide</h1>
+            <div class="meta">
+                <span class="last-updated">Last updated: 2025-10-01 20:43:11</span>
+            </div>
+        </header>
+        <main class="content">
+            <h1 id="enterprise-deployment-hardware-repair-guide">💻 Enterprise Deployment &amp; Hardware Repair Guide</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#1-software-deployment-solutions">1. Software Deployment Solutions</a></li>
+<li><a href="#11-microsoft-endpoint-manager-intune">1.1 Microsoft Endpoint Manager (Intune)</a></li>
+<li><a href="#12-pdq-deploy--inventory">1.2 PDQ Deploy &amp; Inventory</a></li>
+<li><a href="#2-hardware-repair-reference">2. Hardware Repair Reference</a></li>
+<li><a href="#21-dell-latitude-series">2.1 Dell Latitude Series</a></li>
+<li><a href="#22-lenovo-thinkpad-series">2.2 Lenovo ThinkPad Series</a></li>
+<li><a href="#3-deployment-best-practices">3. Deployment Best Practices</a></li>
+<li><a href="#31-pre-deployment-checklist">3.1 Pre-Deployment Checklist</a></li>
+<li><a href="#32-post-deployment-tasks">3.2 Post-Deployment Tasks</a></li>
+<li><a href="#4-troubleshooting-common-issues">4. Troubleshooting Common Issues</a></li>
+<li><a href="#41-software-deployment">4.1 Software Deployment</a></li>
+<li><a href="#42-hardware-problems">4.2 Hardware Problems</a></li>
+<li><a href="#5-documentation--reporting">5. Documentation &amp; Reporting</a></li>
+<li><a href="#51-repair-logs">5.1 Repair Logs</a></li>
+<li><a href="#52-deployment-reports">5.2 Deployment Reports</a></li>
+<li><a href="#6-tools--resources">6. Tools &amp; Resources</a></li>
+<li><a href="#61-essential-toolkit">6.1 Essential Toolkit</a></li>
+<li><a href="#62-online-resources">6.2 Online Resources</a></li>
+<li><a href="#7-training--certification">7. Training &amp; Certification</a></li>
+<li><a href="#71-recommended-certifications">7.1 Recommended Certifications</a></li>
+<li><a href="#72-skill-development">7.2 Skill Development</a></li>
+<li><a href="#8-inventory-management">8. Inventory Management</a></li>
+<li><a href="#81-asset-tracking">8.1 Asset Tracking</a></li>
+<li><a href="#82-warranty-management">8.2 Warranty Management</a></li>
+</ul>
+<hr />
+<h2 id="1-software-deployment-solutions">1. Software Deployment Solutions</h2>
+<h3 id="11-microsoft-endpoint-manager-intune">1.1 Microsoft Endpoint Manager (Intune)</h3>
+<pre class="codehilite"><code class="language-markdown">## Core Capabilities
+- **Application Deployment**: MSI, EXE, MSIX, PWA, Microsoft Store apps
+- **Configuration Profiles**: Device restrictions, VPN, Wi-Fi, email, certificates
+- **Compliance Policies**: Security baselines, update rings, endpoint protection
+- **Script Deployment**: PowerShell, Bash, custom scripts
+- **Conditional Access**: MFA, device compliance, location-based policies
+
+## Common Deployment Scenarios
+- **Windows Autopilot**: Zero-touch deployment for new devices
+- **Co-management**: Integration with Configuration Manager
+- **macOS Management**: Profile-based app deployment
+- **Mobile Application Management**: App protection policies
+- **Windows Update for Business**: Update management and deferral
+
+## Troubleshooting
+- **Common Issues**:
+  - App installation failures
+  - Policy conflicts
+  - Enrollment problems
+  - Sync delays
+- **Diagnostic Tools**:
+  - Company Portal logs
+  - Intune Management Extension logs
+  - Event Viewer (Windows)
+  - Console.app (macOS)
+</code></pre>
+
+<h3 id="12-pdq-deploy-inventory">1.2 PDQ Deploy &amp; Inventory</h3>
+<pre class="codehilite"><code class="language-markdown">## Deployment Features
+- **Package Creation**: Build custom deployment packages
+- **Scheduled Deployments**: Off-hours software rollouts
+- **Pre/Post-Install Scripts**: Custom actions and validations
+- **Dynamic Collections**: Auto-group devices by criteria
+- **Dependency Management**: Handle prerequisites automatically
+
+## Common Packages
+- **Browsers**: Chrome, Firefox, Edge
+- **Runtimes**: Java, .NET, Visual C++
+- **Productivity**: Adobe Reader, 7-Zip, Notepad++
+- **Security**: Antivirus, encryption tools
+- **Custom**: LOB applications, scripts, configurations
+
+## Best Practices
+- Test packages in staging environment
+- Use variables for flexibility
+- Document package configurations
+- Monitor deployment status
+- Maintain version control
+</code></pre>
+
+<h2 id="2-hardware-repair-reference">2. Hardware Repair Reference</h2>
+<h3 id="21-dell-latitude-series">2.1 Dell Latitude Series</h3>
+<pre class="codehilite"><code class="language-markdown">## Common Models
+- **Latitude 5000 Series**: 5490, 5500, 5510, 5520
+- **Latitude 7000 Series**: 7490, 7400, 7410, 7420
+- **Latitude 9000 Series**: 9410, 9420, 9510, 9520
+
+## Common Repairs
+1. **Battery Replacement**:
+   - Power off device
+   - Remove bottom cover
+   - Disconnect battery cable
+   - Remove screws and replace
+   - Reassemble and test
+
+2. **Keyboard Replacement**:
+   - Remove bottom cover and battery
+   - Remove keyboard bezel
+   - Disconnect keyboard cable
+   - Remove screws and replace
+   - Reassemble and test
+
+3. **Display Assembly**:
+   - Remove bottom cover and battery
+   - Remove display bezel
+   - Disconnect display cables
+   - Remove hinge screws
+   - Replace display panel
+   - Reassemble and test
+
+## Diagnostic Tools
+- **ePSA**: Built-in diagnostics (F12 at boot)
+- **SupportAssist**: Dell diagnostic tool
+- **Dell Command | Update**: Driver and firmware updates
+- **Dell Command | Configure**: BIOS configuration
+</code></pre>
+
+<h3 id="22-lenovo-thinkpad-series">2.2 Lenovo ThinkPad Series</h3>
+<pre class="codehilite"><code class="language-markdown">## Common Models
+- **T Series**: T480, T490, T14, T15
+- **X Series**: X1 Carbon, X1 Yoga, X13
+- **P Series**: P15, P17, P1 (Workstation)
+- **L Series**: L14, L15 (Budget)
+
+## Common Repairs
+1. **TrackPoint/Keyboard**:
+   - Remove bottom cover
+   - Disconnect keyboard cable
+   - Remove keyboard screws
+   - Replace and reassemble
+
+2. **Fan/Heatsink**:
+   - Remove bottom cover
+   - Disconnect fan cable
+   - Remove screws
+   - Clean/replace fan
+   - Apply thermal paste
+   - Reassemble
+
+3. **Power Jack**:
+   - Remove battery and bottom cover
+   - Disconnect power jack cable
+   - Remove screws
+   - Replace power jack
+   - Reassemble
+
+## Diagnostic Tools
+- **Lenovo Diagnostics**: F10 at boot
+- **Lenovo Vantage**: System health check
+- **Lenovo System Update**: Driver and firmware updates
+- **PC-Doctor**: Advanced diagnostics
+</code></pre>
+
+<h2 id="3-deployment-best-practices">3. Deployment Best Practices</h2>
+<h3 id="31-pre-deployment-checklist">3.1 Pre-Deployment Checklist</h3>
+<pre class="codehilite"><code class="language-markdown">## Hardware Preparation
+- Verify hardware specifications
+- Update BIOS/UEFI
+- Run hardware diagnostics
+- Clean and sanitize device
+- Apply asset tags
+
+## Software Preparation
+- Create standard image
+- Update OS and drivers
+- Install base applications
+- Configure security settings
+- Join to domain/Intune
+
+## Documentation
+- Record serial numbers
+- Document configurations
+- Create user guides
+- Update asset management
+- Prepare recovery media
+</code></pre>
+
+<h3 id="32-post-deployment-tasks">3.2 Post-Deployment Tasks</h3>
+<pre class="codehilite"><code class="language-markdown">## Verification
+- Test all hardware components
+- Verify network connectivity
+- Test application functionality
+- Confirm security policies
+- Check backup systems
+
+## User Setup
+- Create user accounts
+- Configure email and apps
+- Set up printers
+- Provide training
+- Document credentials
+
+## Maintenance
+- Schedule updates
+- Monitor performance
+- Clean and inspect regularly
+- Update documentation
+- Plan for refresh cycle
+</code></pre>
+
+<h2 id="4-troubleshooting-common-issues">4. Troubleshooting Common Issues</h2>
+<h3 id="41-software-deployment">4.1 Software Deployment</h3>
+<pre class="codehilite"><code class="language-markdown">## Intune Issues
+- **App Not Installing**:
+  - Check device compliance
+  - Verify licensing
+  - Review app requirements
+  - Check network connectivity
+  - Review Intune logs
+
+- **Policy Conflicts**:
+  - Check policy assignments
+  - Review conflict reports
+  - Test with security baseline
+  - Use troubleshooting scripts
+
+## PDQ Issues
+- **Package Fails**:
+  - Check package logs
+  - Verify permissions
+  - Test manually
+  - Review dependencies
+  - Check target OS compatibility
+</code></pre>
+
+<h3 id="42-hardware-problems">4.2 Hardware Problems</h3>
+<pre class="codehilite"><code class="language-markdown">## Common Symptoms
+- **No Power**:
+  - Check power adapter
+  - Test power jack
+  - Remove battery and test
+  - Check for short circuits
+
+- **Overheating**:
+  - Clean vents and fans
+  - Replace thermal paste
+  - Check for background processes
+  - Update BIOS/drivers
+
+- **Display Issues**:
+  - Test with external monitor
+  - Reseat display cable
+  - Update graphics drivers
+  - Check for physical damage
+</code></pre>
+
+<h2 id="5-documentation-reporting">5. Documentation &amp; Reporting</h2>
+<h3 id="51-repair-logs">5.1 Repair Logs</h3>
+<pre class="codehilite"><code class="language-markdown">## Required Information
+- Device make/model/serial
+- Issue description
+- Diagnostic results
+- Parts replaced
+- Time spent
+- Technician notes
+
+## Templates
+</code></pre>
+
+<p>Repair Ticket #: [Number]<br />
+Date: [Date]<br />
+Technician: [Name]<br />
+Device: [Make/Model/SN]<br />
+Issue: [Description]<br />
+Diagnosis: [Findings]<br />
+Actions Taken: [Steps]<br />
+Parts Used: [List]<br />
+Resolution: [Outcome]<br />
+Time Spent: [Hours:Minutes]</p>
+<pre class="codehilite"><code>
+</code></pre>
+
+<pre class="codehilite"><code>### 5.2 Deployment Reports
+```markdown
+## Metrics to Track
+- Devices deployed
+- Deployment success rate
+- Average deployment time
+- Common issues encountered
+- User satisfaction
+
+## Sample Report
+</code></pre>
+
+<p>Deployment Summary - [Date Range]<br />
+Total Devices: [Number]<br />
+Success Rate: [Percentage]<br />
+Average Time per Device: [Time]</p>
+<p>Top Issues:<br />
+1. [Issue 1] - [Count]<br />
+2. [Issue 2] - [Count]<br />
+3. [Issue 3] - [Count]</p>
+<p>Recommendations:<br />
+- [Action Item 1]<br />
+- [Action Item 2]<br />
+- [Action Item 3]</p>
+<pre class="codehilite"><code>
+</code></pre>
+
+<h2 id="6-tools-resources">6. Tools &amp; Resources</h2>
+<h3 id="61-essential-toolkit">6.1 Essential Toolkit</h3>
+<pre class="codehilite"><code class="language-markdown">## Hardware Tools
+- Precision screwdriver set
+- Spudgers and pry tools
+- Anti-static wrist strap
+- Compressed air
+- Multimeter
+- Spare screws and parts
+
+## Software Tools
+- Bootable USB drives
+- Diagnostic utilities
+- Driver packages
+- Recovery media
+- Remote management tools
+- Password reset tools
+</code></pre>
+
+<h3 id="62-online-resources">6.2 Online Resources</h3>
+<pre class="codehilite"><code class="language-markdown">## Dell Support
+- Dell Support Site: support.dell.com
+- Service Manuals
+- Driver Downloads
+- Community Forums
+
+## Lenovo Support
+- Lenovo Support Site: support.lenovo.com
+- Hardware Maintenance Manuals
+- System Update
+- Forums and Knowledge Base
+
+## Microsoft Resources
+- Microsoft Docs: docs.microsoft.com
+- Intune Documentation
+- Windows ADK
+- Deployment Toolkit
+</code></pre>
+
+<h2 id="7-training-certification">7. Training &amp; Certification</h2>
+<h3 id="71-recommended-certifications">7.1 Recommended Certifications</h3>
+<pre class="codehilite"><code class="language-markdown">## Microsoft
+- Microsoft 365 Certified: Modern Desktop Administrator Associate
+- Microsoft Certified: Endpoint Administrator Associate
+- Microsoft 365 Certified: Enterprise Administrator Expert
+
+## Hardware
+- Dell Certified Technician
+- Lenovo Certified Technician
+- CompTIA A+
+
+## Deployment
+- Microsoft Certified: Windows Client
+- ITIL 4 Foundation
+- Certified Deployment Professional
+</code></pre>
+
+<h3 id="72-skill-development">7.2 Skill Development</h3>
+<pre class="codehilite"><code class="language-markdown">## Technical Skills
+- PowerShell scripting
+- Group Policy management
+- Mobile Device Management
+- Security best practices
+- Network fundamentals
+
+## Soft Skills
+- Customer service
+- Documentation
+- Time management
+- Problem-solving
+- Communication
+</code></pre>
+
+<h2 id="8-inventory-management">8. Inventory Management</h2>
+<h3 id="81-asset-tracking">8.1 Asset Tracking</h3>
+<pre class="codehilite"><code class="language-markdown">## Essential Data
+- Asset tag
+- Serial number
+- Model
+- Purchase date
+- Warranty status
+- Assigned user
+- Location
+- Configuration details
+- Service history
+
+## Tools
+- Snipe-IT
+- Lansweeper
+- PDQ Inventory
+- Custom database
+- Spreadsheet (temporary)
+</code></pre>
+
+<h3 id="82-warranty-management">8.2 Warranty Management</h3>
+<pre class="codehilite"><code class="language-markdown">## Tracking
+- Warranty start/end dates
+- Service tags
+- Support contacts
+- Coverage details
+- Claim procedures
+
+## Optimization
+- Proactive renewals
+- Extended warranty evaluation
+- Service contract management
+- Cost-benefit analysis
+- Vendor comparison
+</code></pre>
+
+<h2 id="9-security-considerations">9. Security Considerations</h2>
+<h3 id="91-data-protection">9.1 Data Protection</h3>
+<pre class="codehilite"><code class="language-markdown">## Secure Deployment
+- BitLocker encryption
+- Secure Boot
+- BIOS/UEFI passwords
+- Firmware TPM
+- Secure Erase for storage
+
+## Access Control
+- Principle of least privilege
+- Multi-factor authentication
+- Conditional access policies
+- Just-in-time access
+- Audit logging
+</code></pre>
+
+<h3 id="92-compliance">9.2 Compliance</h3>
+<pre class="codehilite"><code class="language-markdown">## Standards
+- NIST SP 800-88 (Media Sanitization)
+- ISO/IEC 27001
+- GDPR (if applicable)
+- HIPAA (if applicable)
+- Industry-specific regulations
+
+## Documentation
+- Data handling procedures
+- Incident response plan
+- Audit trails
+- Compliance reports
+- Training records
+</code></pre>
+
+<h2 id="10-continuous-improvement">10. Continuous Improvement</h2>
+<h3 id="101-process-optimization">10.1 Process Optimization</h3>
+<pre class="codehilite"><code class="language-markdown">## Evaluation Metrics
+- Deployment success rate
+- Mean time to repair (MTTR)
+- First-time fix rate
+- Customer satisfaction
+- Cost per device
+
+## Improvement Strategies
+- Regular process reviews
+- Automation opportunities
+- Training updates
+- Tool evaluation
+- Feedback collection
+</code></pre>
+
+<h3 id="102-staying-current">10.2 Staying Current</h3>
+<pre class="codehilite"><code class="language-markdown">## Industry Trends
+- New device technologies
+- Deployment methodologies
+- Security threats
+- Management solutions
+- Best practices
+
+## Professional Development
+- Conferences and workshops
+- Webinars and training
+- Certification renewals
+- Peer networking
+- Vendor roadmaps
+</code></pre>
+
+<hr />
+<p><em>Document Version: 1.0<br />
+Last Updated: 2025-09-20</em></p>
+        </main>
+        <footer class="footer">
+            <p>Generated by Markdown to HTML Converter</p>
+        </footer>
+    </div>
+</body>
+</html>

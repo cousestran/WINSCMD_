@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Markdown to HTML Converter">
+    <title>desktop_support_handbook</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>desktop_support_handbook</h1>
+            <div class="meta">
+                <span class="last-updated">Last updated: 2025-10-03 18:43:48</span>
+            </div>
+        </header>
+        <main class="content">
+            <h1 id="comprehensive-desktop-support-handbook">🖥️ Comprehensive Desktop Support Handbook</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<h3 id="1-operating-system-support">1. Operating System Support</h3>
+<ul>
+<li><a href="#11-windows-support">1.1 Windows Support</a></li>
+<li><a href="#common-issues--solutions-1">Common Issues &amp; Solutions</a></li>
+<li><a href="#useful-commands">Useful Commands</a></li>
+<li><a href="#12-macos-support">1.2 macOS Support</a></li>
+<li><a href="#common-issues--solutions-2">Common Issues &amp; Solutions</a></li>
+<li><a href="#essential-commands">Essential Commands</a></li>
+</ul>
+<h3 id="2-email-client-support">2. Email Client Support</h3>
+<ul>
+<li><a href="#21-microsoft-outlook">2.1 Microsoft Outlook</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#common-issues">Common Issues</a></li>
+<li><a href="#22-webmail-access">2.2 Webmail Access</a></li>
+<li><a href="#quick-links">Quick Links</a></li>
+</ul>
+<h3 id="3-microsoft-office-support">3. Microsoft Office Support</h3>
+<ul>
+<li><a href="#31-common-issues--fixes">3.1 Common Issues &amp; Fixes</a></li>
+<li><a href="#32-office-repair">3.2 Office Repair</a></li>
+</ul>
+<h3 id="4-hardware-support">4. Hardware Support</h3>
+<ul>
+<li><a href="#41-troubleshooting-matrix">4.1 Troubleshooting Matrix</a></li>
+<li><a href="#42-peripheral-setup">4.2 Peripheral Setup</a></li>
+</ul>
+<h3 id="5-remote-access-solutions">5. Remote Access Solutions</h3>
+<ul>
+<li><a href="#51-supported-tools">5.1 Supported Tools</a></li>
+<li><a href="#52-connection-troubleshooting">5.2 Connection Troubleshooting</a></li>
+</ul>
+<h3 id="6-software-deployment">6. Software Deployment</h3>
+<ul>
+<li><a href="#61-common-packages">6.1 Common Packages</a></li>
+<li><a href="#62-deployment-script">6.2 Deployment Script</a></li>
+</ul>
+<h3 id="7-security-best-practices">7. Security Best Practices</h3>
+<ul>
+<li><a href="#71-endpoint-protection">7.1 Endpoint Protection</a></li>
+<li><a href="#72-patch-management">7.2 Patch Management</a></li>
+</ul>
+<h3 id="8-knowledge-base-self-help">8. Knowledge Base &amp; Self-Help</h3>
+<ul>
+<li><a href="#81-common-solutions">8.1 Common Solutions</a></li>
+</ul>
+<hr />
+<h1 id="comprehensive-desktop-support-handbook_1">Comprehensive Desktop Support Handbook</h1>
+<h1 id="1-operating-system-support_1">1. Operating System Support</h1>
+<h2 id="11-windows-support">1.1 Windows Support</h2>
+<h3 id="common-issues-solutions">Common Issues &amp; Solutions</h3>
+<h3 id="windows-1011">Windows 10/11</h3>
+<table>
+<thead>
+<tr>
+<th>Issue</th>
+<th>Troubleshooting Steps</th>
+<th>Command/Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Slow Performance</td>
+<td>1. Check Task Manager for resource hogs<br>2. Run disk cleanup<br>3. Disable startup programs</td>
+<td><code>taskmgr</code><br><code>cleanmgr</code><br><code>msconfig</code></td>
+</tr>
+<tr>
+<td>Update Failures</td>
+<td>1. Run Windows Update Troubleshooter<br>2. Reset Windows Update components<br>3. Manually install updates</td>
+<td><code>msdt /id WindowsUpdateDiagnostic</code><br><code>net stop wuauserv</code><br>Microsoft Update Catalog</td>
+</tr>
+<tr>
+<td>Blue Screen (BSOD)</td>
+<td>1. Note error code<br>2. Check Event Viewer<br>3. Update drivers</td>
+<td><code>eventvwr</code><br><code>verifier</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="useful-commands">Useful Commands</h3>
+<pre class="codehilite"><code class="language-batch"># System Information
+systeminfo
+msinfo32
+
+# Disk Management
+diskpart
+chkdsk /f /r
+
+# Network Troubleshooting
+ipconfig /all
+netsh winsock reset
+nslookup google.com
+</code></pre>
+
+<h2 id="12-macos-support">1.2 macOS Support</h2>
+<h3 id="common-issues-solutions_1">Common Issues &amp; Solutions</h3>
+<table>
+<thead>
+<tr>
+<th>Issue</th>
+<th>Troubleshooting Steps</th>
+<th>Terminal Commands</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Startup Issues</td>
+<td>1. Safe Boot (Shift)<br>2. Disk Utility First Aid<br>3. NVRAM Reset</td>
+<td><code>fsck -fy</code><br><code>diskutil verifyVolume /</code></td>
+</tr>
+<tr>
+<td>Wi-Fi Problems</td>
+<td>1. Create new location<br>2. Remove plist files<br>3. Reset network settings</td>
+<td><code>sudo rm /Library/Preferences/SystemConfiguration/*.plist</code></td>
+</tr>
+<tr>
+<td>Application Crashes</td>
+<td>1. Check Console logs<br>2. Reinstall app<br>3. Create new user account</td>
+<td><code>log show --predicate 'process == "AppName"' --last 1h</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="essential-commands">Essential Commands</h3>
+<pre class="codehilite"><code class="language-bash"># System Information
+system_profiler SPHardwareDataType
+diskutil list
+
+# Permission Repair
+diskutil resetUserPermissions / `id -u`
+
+# Network Diagnostics
+netstat -an | grep LISTEN
+lsof -i -P | grep -i &quot;listen&quot;
+</code></pre>
+
+<h2 id="2-email-client-support_1">2. Email Client Support</h2>
+<h3 id="21-microsoft-outlook">2.1 Microsoft Outlook</h3>
+<p><strong>Configuration</strong></p>
+<pre class="codehilite"><code>Incoming: outlook.office365.com (IMAP)
+Outgoing: smtp.office365.com
+Ports: 993 (IMAP), 587 (SMTP)
+Authentication: OAuth2
+</code></pre>
+
+<p><strong>Common Issues</strong><br />
+- <strong>OST/PST Corruption</strong>:<br />
+<code>powershell
+  # Close Outlook, then:
+  SCANPST.EXE "path_to_ost_file"</code><br />
+- <strong>Profile Rebuild</strong>:<br />
+  1. Control Panel &gt; Mail &gt; Show Profiles<br />
+  2. Create new profile<br />
+  3. Set as default</p>
+<h3 id="22-webmail-access">2.2 Webmail Access</h3>
+<p><strong>Quick Links</strong>:<br />
+- Office 365: <a href="https://portal.office.com">portal.office.com</a><br />
+- Gmail: <a href="https://mail.google.com">mail.google.com</a><br />
+- IMAP Settings Guide: <a href="https://support.example.com/imap">support.example.com/imap</a></p>
+<h2 id="3-microsoft-office-support_1">3. Microsoft Office Support</h2>
+<h3 id="31-common-issues-fixes">3.1 Common Issues &amp; Fixes</h3>
+<table>
+<thead>
+<tr>
+<th>Application</th>
+<th>Issue</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Word</td>
+<td>Not Responding</td>
+<td>Disable Add-ins &gt; File &gt; Options &gt; Add-ins</td>
+</tr>
+<tr>
+<td>Excel</td>
+<td>Slow Calculation</td>
+<td>Formulas &gt; Calculation Options &gt; Manual</td>
+</tr>
+<tr>
+<td>PowerPoint</td>
+<td>Media Playback Issues</td>
+<td>File &gt; Info &gt; Optimize Compatibility</td>
+</tr>
+<tr>
+<td>Outlook</td>
+<td>Search Not Working</td>
+<td>Rebuild Index: Control Panel &gt; Indexing Options</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-office-repair">3.2 Office Repair</h3>
+<ol>
+<li>
+<p><strong>Quick Repair</strong>:<br />
+   - Control Panel &gt; Programs &gt; Office &gt; Change &gt; Quick Repair</p>
+</li>
+<li>
+<p><strong>Online Repair</strong>:<br />
+   - Control Panel &gt; Programs &gt; Office &gt; Change &gt; Online Repair</p>
+</li>
+</ol>
+<h2 id="4-hardware-support_1">4. Hardware Support</h2>
+<h3 id="41-troubleshooting-matrix">4.1 Troubleshooting Matrix</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Test</th>
+<th>Tools</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RAM</td>
+<td>Windows Memory Diagnostic</td>
+<td><code>mdsched.exe</code></td>
+</tr>
+<tr>
+<td>HDD/SSD</td>
+<td>S.M.A.R.T. Check</td>
+<td>CrystalDiskInfo</td>
+</tr>
+<tr>
+<td>CPU</td>
+<td>Stress Test</td>
+<td>Prime95</td>
+</tr>
+<tr>
+<td>GPU</td>
+<td>Benchmark</td>
+<td>3DMark/FurMark</td>
+</tr>
+<tr>
+<td>Network</td>
+<td>Packet Loss Test</td>
+<td><code>ping -t 8.8.8.8</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-peripheral-setup">4.2 Peripheral Setup</h3>
+<p><strong>Printers</strong>:<br />
+1. Download latest driver<br />
+2. Run installer as admin<br />
+3. Test print</p>
+<p><strong>Docking Stations</strong>:<br />
+1. Update firmware<br />
+2. Connect power first<br />
+3. Attach peripherals<br />
+4. Connect laptop</p>
+<h2 id="5-remote-access-solutions_1">5. Remote Access Solutions</h2>
+<h3 id="51-supported-tools">5.1 Supported Tools</h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Use Case</th>
+<th>Authentication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TeamViewer</td>
+<td>Quick Support</td>
+<td>Password-based</td>
+</tr>
+<tr>
+<td>AnyDesk</td>
+<td>Cross-platform</td>
+<td>Password/2FA</td>
+</tr>
+<tr>
+<td>Windows RDP</td>
+<td>Internal Network</td>
+<td>Domain Credentials</td>
+</tr>
+<tr>
+<td>Splashtop</td>
+<td>Multi-monitor</td>
+<td>SSO/2FA</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52-connection-troubleshooting">5.2 Connection Troubleshooting</h3>
+<ol>
+<li><strong>Check Network</strong>:<br />
+<code>powershell
+   Test-NetConnection -ComputerName [IP] -Port 3389</code></li>
+<li><strong>Verify Services</strong>:<br />
+<code>batch
+   sc query TermService
+   net start TermService</code></li>
+<li><strong>Firewall Rules</strong>:<br />
+<code>powershell
+   Get-NetFirewallRule -DisplayGroup "Remote Desktop"</code></li>
+</ol>
+<h2 id="6-software-deployment_1">6. Software Deployment</h2>
+<h3 id="61-common-packages">6.1 Common Packages</h3>
+<table>
+<thead>
+<tr>
+<th>Software</th>
+<th>Silent Install Switch</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chrome</td>
+<td><code>/silent /install</code></td>
+<td>Auto-updates</td>
+</tr>
+<tr>
+<td>Adobe Reader</td>
+<td><code>/sAll /rs /msi EULA_ACCEPT=YES</code></td>
+<td>Disable updater</td>
+</tr>
+<tr>
+<td>7-Zip</td>
+<td><code>/S</code></td>
+<td>System path update</td>
+</tr>
+</tbody>
+</table>
+<h3 id="62-deployment-script">6.2 Deployment Script</h3>
+<pre class="codehilite"><code class="language-powershell"># Deploy-Software.ps1
+param(
+    [string]$ComputerName,
+    [string]$Software
+)
+
+$softwareMap = @{
+    'chrome'  = @{
+        url = 'https://dl.google.com/chrome/install/latest/chrome_installer.exe'
+        args = '/silent /install'
+    }
+    '7zip'    = @{
+        url = 'https://www.7-zip.org/a/7z2107-x64.exe'
+        args = '/S'
+    }
+}
+
+if ($softwareMap.ContainsKey($Software)) {
+    $tempFile = &quot;$env:TEMP\$Software-installer.exe&quot;
+    Invoke-WebRequest -Uri $softwareMap[$Software].url -OutFile $tempFile
+    Start-Process -FilePath $tempFile -ArgumentList $softwareMap[$Software].args -Wait
+    Remove-Item $tempFile
+}
+</code></pre>
+
+<h2 id="7-security-best-practices_1">7. Security Best Practices</h2>
+<h3 id="71-endpoint-protection">7.1 Endpoint Protection</h3>
+<ul>
+<li>Enable Windows Defender</li>
+<li>Regular scan schedule</li>
+<li>Update signatures daily</li>
+</ul>
+<h3 id="72-patch-management">7.2 Patch Management</h3>
+<ul>
+<li>Critical updates: 7-day SLA</li>
+<li>Feature updates: 30-day testing</li>
+<li>Third-party patching: Monthly</li>
+</ul>
+<h2 id="8-knowledge-base-self-help_1">8. Knowledge Base &amp; Self-Help</h2>
+<h3 id="81-common-solutions">8.1 Common Solutions</h3>
+<ul>
+<li><strong>Password Reset</strong>: <a href="https://password.example.com">password.example.com</a></li>
+<li><strong>Software Portal</strong>: <a href="https://software.example.com">software.example.com</a></li>
+<li><strong>VPN Setup</strong>: <a href="https://vpn.example.com/setup">vpn.example.com/setup</a></li>
+</ul>
+<h3 id="82-troubleshooting-guides">8.2 Troubleshooting Guides</h3>
+<ol>
+<li><a href="#">Wi-Fi Connection Issues</a></li>
+<li><a href="#">Printer Installation</a></li>
+<li><a href="#">Email Configuration</a></li>
+<li><a href="#">Software Installation</a></li>
+</ol>
+<h2 id="9-escalation-procedures">9. Escalation Procedures</h2>
+<h3 id="91-when-to-escalate">9.1 When to Escalate</h3>
+<ul>
+<li>Hardware failure</li>
+<li>Data loss</li>
+<li>Security incidents</li>
+<li>Recurring issues</li>
+</ul>
+<h3 id="92-required-information">9.2 Required Information</h3>
+<ol>
+<li>Error messages</li>
+<li>Troubleshooting steps taken</li>
+<li>User impact</li>
+<li>Screenshots/logs</li>
+</ol>
+<h2 id="10-quick-reference">10. Quick Reference</h2>
+<h3 id="101-common-ports">10.1 Common Ports</h3>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Port</th>
+<th>Protocol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTTP</td>
+<td>80</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>HTTPS</td>
+<td>443</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>RDP</td>
+<td>3389</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>SSH</td>
+<td>22</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>SMB</td>
+<td>445</td>
+<td>TCP</td>
+</tr>
+</tbody>
+</table>
+<h3 id="102-system-utilities">10.2 System Utilities</h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>System File Checker</td>
+<td>Repair system files</td>
+<td><code>sfc /scannow</code></td>
+</tr>
+<tr>
+<td>DISM</td>
+<td>Repair Windows image</td>
+<td><code>DISM /Online /Cleanup-Image /RestoreHealth</code></td>
+</tr>
+<tr>
+<td>Event Viewer</td>
+<td>Check system logs</td>
+<td><code>eventvwr</code></td>
+</tr>
+<tr>
+<td>Resource Monitor</td>
+<td>Real-time system stats</td>
+<td><code>resmon</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Document Version: 1.0<br />
+Last Updated: 2025-09-20</em></p>
+        </main>
+        <footer class="footer">
+            <p>Generated by Markdown to HTML Converter</p>
+        </footer>
+    </div>
+</body>
+</html>
